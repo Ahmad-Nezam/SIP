@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villas - StayInPalestine</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div class="background-container">
+     
+        <nav class="navbar navbar-expand-lg bg-light" >
+            <a class="navbar-brand" href="#">StayInPalestine</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}" >About us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+
+        <div class="card-container">
+          {% for villa in villas %}
+          <div class="card">
+              <form action="{% url 'villa' %}" method="POST">
+                  {% csrf_token %} 
+                  <img class="card-img-top" src="{{ villa.image.url }}" alt="{{ villa.name }}">
+                  <h1>{{ villa.name }}</h1>
+                  <h2>{{ villa.desc }}</h2>
+                  <h2>{{ villa.rooms }}</h2>
+                  <input type="hidden" name="desc" value="{{ product.desc }}">
+                  <input type="hidden" name="name" value="{{ product.name }}">
+                  <input type="hidden" name="image_url" value="{{ product.image.url }}"><br><br>
+                  <input type="hidden" name="rooms" value="{{ product.rooms }}">
+                  <button type="submit">Booking</button>
+              </form>
+          </div>
+          {% endfor %}
+      </div>
+      
+
+
+
+</body>
+</html>

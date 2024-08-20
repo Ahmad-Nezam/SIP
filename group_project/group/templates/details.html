@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details - StayInPalestine</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/details.css' %}">
+
+</head>
+<body>
+    <div class="background-container">
+     
+        <nav class="navbar navbar-expand-lg bg-light" >
+            <a class="navbar-brand" href="#">StayInPalestine</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}" >About us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+        {% if details %}
+        <div class="details">
+            <div class="details-image">
+                <img src="{{ details.image_url }}" alt="{{ details.name }}">
+                <button class="view-more-btn" onclick="openModal()">View More Photos</button>
+            </div>
+            <div class="details-info">
+                <h1>{{ details.name }}</h1>
+                <h2>{{ details.desc }}</h2>
+                <h2>Rooms: {{ details.rooms }}</h2>
+                <h2>Status: {{ details.status }}</h2>
+                <h2>Location: {{ details.location }}</h2>
+                <h2>Price: {{ details.price }} $ per day</h2> 
+                <div class="action-buttons">
+                    <button  type="submit" class="cardbutton2">Yes</button>
+                    <a href="/villa" class="cardbutton2">No</a>
+                </div>
+            </div>
+        </div>
+       
+        <div id="photoModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <img src="{{ details.additional_image1_url }}" alt="Additional Image 1">
+                <img src="{{ details.additional_image2_url }}" alt="Additional Image 2">
+                <img src="{{ details.additional_image3_url }}" alt="Additional Image 3">
+            </div>
+        </div>
+    {% else %}
+        <h1>No purchase details available.</h1>
+    {% endif %}
+    
+    
+        
+        <div class="features">
+            <div class="feature-card">
+                <i class="fas fa-snowflake"></i>
+                <p>Air Conditioning</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-parking"></i>
+                <p>Parking Spaces</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-wifi"></i>
+                <p>Free Internet</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-smoking-ban"></i>
+                <p>Non-smoking Rooms</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bath"></i>
+                <p>Private Bathroom</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-wheelchair"></i>
+                <p>Facilities for Disabled Guests</p>
+            </div>
+        </div>
+        
+        
+
+    <script src="{% static 'css/photo.js' %}"></script>
+
+    </body>
+    </html>

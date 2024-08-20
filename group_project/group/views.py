@@ -54,16 +54,34 @@ def login(request):
 def villa(request):
     my_villa = models.get_villa()
     if request.method == 'POST':
-        name = request.POST.get('name' , 'Unknown Product')
-        desc = request.POST.get('desc' , 'Unknown Product')
-        rooms = request.POST.get('rooms' , 'Unknown Product')
-        villas={
-            'name' : name ,
-            'desc' : desc ,
-            'rooms' : rooms
+        name = request.POST.get('name', 'Unknown Product')
+        desc = request.POST.get('desc', 'Unknown Product')
+        rooms = request.POST.get('rooms', 'Unknown Product')
+        status = request.POST.get('status', 'Unknown Product')
+        location = request.POST.get('location', 'Unknown Product')
+        price = request.POST.get('price', 'Unknown Product')
+        image_url = request.POST.get('image_url', '')
+
+        villa_details = {
+            'name': name,
+            'desc': desc,
+            'rooms': rooms,
+            'status': status,
+            'location': location,
+            'price' : price,
+            'image_url': image_url,
         }
-        request.session['villas'] = villas
-    return render(request , 'villas.html' , {'villas' : my_villa}) 
+        request.session['villas'] = villa_details
+        return redirect('/details') 
+    return render(request, 'villas.html', {'villas': my_villa})
+
+def details(request):
+    villas = request.session.get('villas', None)
+    context = {
+        'details': villas
+    }
+    return render(request, 'details.html', context) 
+
 
 def logout(request):
     request.session.flush()

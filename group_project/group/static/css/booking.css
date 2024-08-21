@@ -54,3 +54,26 @@
 .submit-btn:hover {
     background-color: #218838;
 }
+
+
+
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.alert.error {
+    background-color: #dc3545;
+    color: white;
+}

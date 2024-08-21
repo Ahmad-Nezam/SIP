@@ -2,7 +2,7 @@ from django.shortcuts import render ,redirect
 from . import models
 from django.contrib import messages 
 from django.http import JsonResponse
-from .models import user 
+from .models import user , booking ,villas
 import bcrypt
 
 def index(request):
@@ -82,8 +82,24 @@ def details(request):
     }
     return render(request, 'details.html', context) 
 
-def booking(request):
-    return render(request , 'booking.html')
+def booking_view(request, villa_id):
+    try:
+        villa = villas.objects.get(id=villa_id)
+    except villas.DoesNotExist:
+        messages.error(request, 'The selected villa does not exist.')
+        return redirect('some_error_page')  # Ensure 'some_error_page' is a valid URL name
+
+    if request.method == 'POST':
+        try:
+            models.create_booking(request)  # Call the booking creation function
+            messages.success(request, 'Your booking was successfully created!')
+            return redirect('booking', villa_id=villa_id)
+        except Exception as e:
+            print(f"Booking creation failed: {e}")
+            messages.error(request, f'An error occurred: {e}')
+    
+    return render(request, 'booking.html', {'villa': villa})
+
 
 
 

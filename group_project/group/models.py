@@ -56,7 +56,10 @@ class booking(models.Model):
     phone = models.IntegerField()
     date_start = models.DateTimeField() 
     date_end = models.DateTimeField() 
-    villas_id = models.ForeignKey(villas , on_delete = models.CASCADE) 
+    villas_id = models.ForeignKey(villas, on_delete=models.CASCADE)
+
+
+
 
 
 def create_user(request , pw_hash):
@@ -65,7 +68,44 @@ def create_user(request , pw_hash):
     email = request['email']
     password = request['password']
     conf_password = request['conf_password']
-    return user.objects.create(First_name = First_name , Last_name = Last_name , email = email ,  conf_password = pw_hash , password = pw_hash)
+    return user.objects.create(First_name = First_name,
+                                Last_name = Last_name, 
+                                email = email,  
+                                conf_password = pw_hash, 
+                                password = pw_hash) 
+
+
+
+
+def create_booking(request):
+    # Extract data from the request
+    first_name = request.POST.get('firstName')
+    last_name = request.POST.get('lastName')
+    phone_number = request.POST.get('phoneNumber')
+    start_date = request.POST.get('startDate')
+    end_date = request.POST.get('endDate')
+    villas_id = request.POST.get('villas_id')
+
+    # Retrieve the villa instance using the ID
+    try:
+        villa_instance = villas.objects.get(id=villas_id)
+    except villas.DoesNotExist:
+        raise ValueError("Invalid villa ID")
+
+    # Create the booking instance
+    booking_instance = booking(
+        First_name=first_name,
+        Last_name=last_name,
+        phone=phone_number,
+        date_start=start_date,
+        date_end=end_date,
+        villas_id=villa_instance  # Assign the actual villa instance
+    )
+    
+    # Save the booking instance
+    booking_instance.save()
+
+    return booking_instance  
 
 def get_villa():
-    return villas.objects.all()
+    return villas.objects.all() 

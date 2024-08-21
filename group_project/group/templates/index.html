@@ -7,7 +7,7 @@
     {% load static %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="static/js.js"></script>
+    
 </head>
 <body>
   <div class="background-container">
@@ -19,6 +19,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" >{{First_name}} {{Last_name}}</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
@@ -97,5 +100,6 @@
   <footer class="bg-dark text-white text-center py-3">
       <p>&copy; 2024 StayInPalestine. All rights reserved.</p>
   </footer>
+  <script src="static/js.js"></script>
 </body>
 </html>

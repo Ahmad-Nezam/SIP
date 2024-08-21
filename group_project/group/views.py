@@ -6,7 +6,14 @@ from .models import user , booking ,villas
 import bcrypt
 
 def index(request):
-    return render(request, 'index.html')
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    context = { 
+        'First_name' : First_name,
+        'Last_name' : Last_name ,
+
+    }
+    return render(request, 'index.html' ,context)
 
 def about(request):
     return render(request, 'about.html')
@@ -67,14 +74,14 @@ def villa(request):
 
 def details(request, villa_id):
     try:
-        # Attempt to retrieve the villa from the database
+      
         villa = villas.objects.get(id=villa_id)
     except villas.DoesNotExist:
-        # If villa is not found, display an error message and redirect or render an error page
+       
         messages.error(request, 'The selected villa does not exist.')
-        return redirect('villa')  # Redirect to the villa list or an error page
+        return redirect('villa') 
 
-    # If villa is found, render the details page
+   
     return render(request, 'details.html', {'details': villa})
 
 
@@ -84,11 +91,11 @@ def booking_view(request, villa_id):
         villa = villas.objects.get(id=villa_id)
     except villas.DoesNotExist:
         messages.error(request, 'The selected villa does not exist.')
-        return redirect('some_error_page')  # Ensure 'some_error_page' is a valid URL name
+        return redirect('some_error_page') 
 
     if request.method == 'POST':
         try:
-            # Create a new booking
+            
             Booking = booking(
                 First_name=request.POST['firstName'],
                 Last_name=request.POST['lastName'],

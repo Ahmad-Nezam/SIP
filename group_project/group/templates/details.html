@@ -40,24 +40,28 @@
             </div>
         </nav>
         {% if details %}
-        <div class="details">
-            <div class="details-image">
-                <img src="{{ details.image_url }}" alt="{{ details.name }}">
-                <button class="view-more-btn" onclick="openModal()">View More Photos</button>
-            </div>
-            <div class="details-info">
-                <h1>{{ details.name }}</h1>
-                <h2>{{ details.desc }}</h2>
-                <h2>Rooms: {{ details.rooms }}</h2>
-                <h2>Status: {{ details.status }}</h2>
-                <h2>Location: {{ details.location }}</h2>
-                <h2>Price: {{ details.price }} $ per day</h2> 
-                <div class="action-buttons">
-                    <button  type="submit" class="cardbutton2"><a href="/booking">Yes</a></button>
-                    <a href="/villa" class="cardbutton2">No</a> 
-                </div>
-            </div>
+
+<div class="details">
+    <div class="details-image">
+        <img src="{{ details.image.url }}" alt="{{ details.name }}">
+        <button class="view-more-btn" onclick="openModal()">View More Photos</button>
+    </div>
+    <div class="details-info">
+        <h1>{{ details.name }}</h1>
+        <h2>{{ details.desc }}</h2>
+        <h2>Rooms: {{ details.rooms }}</h2>
+        <h2>Status: {{ details.status }}</h2>
+        <h2>Location: {{ details.location }}</h2>
+        <h2>Price: {{ details.price }} $ per day</h2> 
+        <div class="action-buttons">
+            <p>Villa ID: {{ details.id }}</p>
+            <a href="{% url 'booking' details.id %}" class="cardbutton2">Yes</a>
+            <a href="{% url 'villa' %}" class="cardbutton2">Back to Villas</a>
         </div>
+    </div>
+</div>
+
+
        
         <div id="photoModal" class="modal">
             <div class="modal-content">

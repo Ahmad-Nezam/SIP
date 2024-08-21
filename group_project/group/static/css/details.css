@@ -52,22 +52,21 @@
 
 .cardbutton2 {
     display: inline-block;
-    padding: 12px 30px;
-    margin-right: 15px;
-    font-size: 1em;
-    color: #fff;
+    padding: 10px 20px;
     background-color: #007bff;
-    border-radius: 5px;
+    color: white;
+    text-align: center;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    border: none;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
 }
 
 .cardbutton2:hover {
     background-color: #0056b3;
-    transform: translateY(-2px);
 }
+
+
 
 .cardbutton2:focus {
     outline: none;

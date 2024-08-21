@@ -50,34 +50,36 @@
 
 
 
-          <div class="booking-form">
-            <h2>Book Your Stay</h2>
-            <form id="bookingForm" method="POST" action="{% url 'booking' villa.id %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}">
-                </div>
-                <div class="form-group">
-                    <label for="startDate">Start Date</label>
-                    <input type="date" id="startDate" name="startDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="endDate">End Date</label>
-                    <input type="date" id="endDate" name="endDate" required>
-                </div>
-                <input type="hidden" name="villas_id" value="{{ villa.id }}">
-                <button type="submit" class="submit-btn">Book Now</button>
-            </form>
-        </div>
+
+<div class="booking-form">
+  <h2>Book Your Stay</h2>
+  <form id="bookingForm" method="POST" action="{% url 'booking' villa.id %}">
+      {% csrf_token %}
+      <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+      </div>
+      <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+      </div>
+      <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}">
+      </div>
+      <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input type="datetime-local" id="startDate" name="startDate" required>
+      </div>
+      <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input type="datetime-local" id="endDate" name="endDate" required>
+      </div>
+      <button type="submit" class="submit-btn">Book Now</button>
+  </form>
+</div>
+
+
         
         
         

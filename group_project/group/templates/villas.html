@@ -39,29 +39,26 @@
             </div>
         </nav>
 
-        <div class="card-container">
-          {% for villa in villas %}
-          <div class="card">
-              <form action="{% url 'villa' %}" method="POST">
-                  {% csrf_token %} 
-                  <img class="card-img-top" src="{{ villa.image.url }}" alt="{{ villa.name }}">
-                  <h1>{{ villa.name }}</h1>
-                  <h2>{{ villa.desc }}</h2>
-                  <h2>{{ villa.rooms }}</h2>
-                  
-                  <input type="hidden" name="name" value="{{ villa.name }}">
-                  <input type="hidden" name="desc" value="{{ villa.desc }}">
-                  <input type="hidden" name="rooms" value="{{ villa.rooms }}">
-                  <input type="hidden" name="status" value="{{ villa.status }}">
-                  <input type="hidden" name="location" value="{{ villa.location }}">
-                  <input type="hidden" name="price" value="{{ villa.price }}">
-                  <input type="hidden" name="image_url" value="{{ villa.image.url }}">
-                  
-                  <button type="submit">More Details</button>
-              </form>
-          </div> 
-          {% endfor %}
-      </div>
+
+<div class="card-container">
+  {% for villa in villas %}
+  <div class="card">
+      <form action="{% url 'villa' %}" method="POST">
+          {% csrf_token %}
+          <img class="card-img-top" src="{{ villa.image.url }}" alt="{{ villa.name }}">
+          <h1>{{ villa.name }}</h1>
+          <h2>{{ villa.desc }}</h2>
+          <h2>{{ villa.rooms }}</h2>
+
+          <input type="hidden" name="villa_id" value="{{ villa.id }}">
+          
+          <button type="submit">More Details</button>
+      </form>
+  </div>
+  {% endfor %}
+</div>
+
+
       
 
 

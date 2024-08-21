@@ -48,14 +48,14 @@ class villas(models.Model):
     status = models.CharField(max_length=20) 
     location = models.CharField(max_length=30) 
     price = models.IntegerField()
-    user_id = models.ForeignKey(user , on_delete = models.CASCADE)
+    user_id = models.ForeignKey(user, on_delete=models.CASCADE)
 
 class booking(models.Model):
     First_name = models.CharField(max_length=30)
     Last_name = models.CharField(max_length=30)
     phone = models.IntegerField()
-    date_start = models.DateTimeField() 
-    date_end = models.DateTimeField() 
+    date_start = models.DateTimeField()
+    date_end = models.DateTimeField()
     villas_id = models.ForeignKey(villas, on_delete=models.CASCADE)
 
 

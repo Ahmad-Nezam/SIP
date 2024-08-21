@@ -51,36 +51,33 @@ def login(request):
             return redirect('/login')
     return render(request, 'login.html')
 
+
+
 def villa(request):
-    my_villa = models.get_villa()
     if request.method == 'POST':
-        name = request.POST.get('name', 'Unknown Product')
-        desc = request.POST.get('desc', 'Unknown Product')
-        rooms = request.POST.get('rooms', 'Unknown Product')
-        status = request.POST.get('status', 'Unknown Product')
-        location = request.POST.get('location', 'Unknown Product')
-        price = request.POST.get('price', 'Unknown Product')
-        image_url = request.POST.get('image_url', '')
+        villa_id = request.POST.get('villa_id')
+        if villa_id:
+           
+            return redirect('details', villa_id=villa_id)
 
-        villa_details = {
-            'name': name,
-            'desc': desc,
-            'rooms': rooms,
-            'status': status,
-            'location': location,
-            'price' : price,
-            'image_url': image_url,
-        }
-        request.session['villas'] = villa_details
-        return redirect('/details') 
-    return render(request, 'villas.html', {'villas': my_villa})
+ 
+    villa = villas.objects.all()
+    return render(request, 'villas.html', {'villas': villa})
 
-def details(request):
-    villas = request.session.get('villas', None)
-    context = {
-        'details': villas
-    }
-    return render(request, 'details.html', context) 
+
+def details(request, villa_id):
+    try:
+        # Attempt to retrieve the villa from the database
+        villa = villas.objects.get(id=villa_id)
+    except villas.DoesNotExist:
+        # If villa is not found, display an error message and redirect or render an error page
+        messages.error(request, 'The selected villa does not exist.')
+        return redirect('villa')  # Redirect to the villa list or an error page
+
+    # If villa is found, render the details page
+    return render(request, 'details.html', {'details': villa})
+
+
 
 def booking_view(request, villa_id):
     try:
@@ -91,7 +88,16 @@ def booking_view(request, villa_id):
 
     if request.method == 'POST':
         try:
-            models.create_booking(request)  # Call the booking creation function
+            # Create a new booking
+            Booking = booking(
+                First_name=request.POST['firstName'],
+                Last_name=request.POST['lastName'],
+                phone=request.POST['phoneNumber'],
+                date_start=request.POST['startDate'],
+                date_end=request.POST['endDate'],
+                villas_id=villa
+            )
+            Booking.save()
             messages.success(request, 'Your booking was successfully created!')
             return redirect('booking', villa_id=villa_id)
         except Exception as e:
@@ -99,7 +105,6 @@ def booking_view(request, villa_id):
             messages.error(request, f'An error occurred: {e}')
     
     return render(request, 'booking.html', {'villa': villa})
-
 
 
 

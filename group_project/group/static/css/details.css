@@ -124,17 +124,21 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    overflow-x: auto; 
 }
 
 .modal-content img {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 15px;
+    width: 45%; 
+    max-width: 500px; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
 }
 
 .close-btn {
@@ -153,6 +157,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 
 
 

@@ -82,6 +82,10 @@ def details(request):
     }
     return render(request, 'details.html', context) 
 
+def booking(request):
+    return render(request , 'booking.html')
+
+
 
 def logout(request):
     request.session.flush()

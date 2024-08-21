@@ -6,7 +6,7 @@
     <title>Villas - StayInPalestine</title>
     {% load static %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
@@ -39,8 +39,36 @@
             </div>
         </nav>
 
+        <div class="booking-form">
+          <h2>Book Your Stay</h2>
+          <form id="bookingForm">
+              <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" name="firstName" required>
+              </div>
+              <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" required>
+              </div>
+              <div class="form-group">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}">
+              </div>
+              <div class="form-group">
+                  <label for="startDate">Start Date</label>
+                  <input type="date" id="startDate" name="startDate" required>
+              </div>
+              <div class="form-group">
+                  <label for="endDate">End Date</label>
+                  <input type="date" id="endDate" name="endDate" required>
+              </div>
+              <button type="submit" class="submit-btn">Book Now</button>
+          </form>
+      </div>
+      
 
-        
+    <script src="{% static 'css/booking.js' %}"></script>
+
 
     </body>
     </html>

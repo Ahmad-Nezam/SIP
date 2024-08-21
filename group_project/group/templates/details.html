@@ -53,8 +53,8 @@
                 <h2>Location: {{ details.location }}</h2>
                 <h2>Price: {{ details.price }} $ per day</h2> 
                 <div class="action-buttons">
-                    <button  type="submit" class="cardbutton2">Yes</button>
-                    <a href="/villa" class="cardbutton2">No</a>
+                    <button  type="submit" class="cardbutton2"><a href="/booking">Yes</a></button>
+                    <a href="/villa" class="cardbutton2">No</a> 
                 </div>
             </div>
         </div>
@@ -62,13 +62,17 @@
         <div id="photoModal" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="closeModal()">&times;</span>
-                <img src="{{ details.additional_image1_url }}" alt="Additional Image 1">
-                <img src="{{ details.additional_image2_url }}" alt="Additional Image 2">
-                <img src="{{ details.additional_image3_url }}" alt="Additional Image 3">
+                <img src="{{ details.image_url }}" alt="Additional Image 1">
+                <img src="{{ details.image_url }}" alt="Additional Image 2">
+                <img src="{{ details.image_url }}" alt="Additional Image 3">
+                <img src="{{ details.image_url }}" alt="Additional Image 3">
+                <img src="{{ details.image_url }}" alt="Additional Image 3">
+                <img src="{{ details.image_url }}" alt="Additional Image 3">
             </div>
         </div>
+        
     {% else %}
-        <h1>No purchase details available.</h1>
+        <h1>No purchase details available</h1>
     {% endif %}
     
     

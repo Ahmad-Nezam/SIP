@@ -37,7 +37,7 @@ body {
 }
 
 .background-container {
-    background-image: url('/static/images/villa.jpg'); /* Make sure the path is correct */
+    background-image: url('/static/css/images/villa.jpg'); /* Make sure the path is correct */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

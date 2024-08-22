@@ -27,7 +27,7 @@ def register(request):
         if len(errors) > 0: 
                 for key , value in errors.items():
                   messages.error(request , value)
-                return redirect('/')
+                return redirect('/login')
         else:    
             pw_hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
             print(pw_hash) 

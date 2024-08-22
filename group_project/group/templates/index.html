@@ -6,14 +6,14 @@
     <title>Villa Booking in Palestine</title>
     {% load static %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <script src="static/js.js"></script>
 </head>
 <body>
   <div class="background-container">
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-light" >
-        <a class="navbar-brand" href="#">StayInPalestine</a>
+        <a class="navbar-brand" href="{% url 'index' %}">StayInPalestine</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,9 +31,6 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">logout</a>
-            </li>
           </ul>
         </div>
     </nav>
@@ -43,7 +40,7 @@
       <div class="hero-overlay">
           <h1 class="display-4">Discover Your Perfect Villa</h1>
           <p class="lead">Experience the charm and beauty of Palestine with our exclusive villas.</p>
-          <button type="submit"><a href="{% url 'villa' %}">Find Your Villa</a></button>
+          <button type="submit">Find Your Villa</button>
       </div>
     </header>
   </div>
@@ -74,19 +71,19 @@
               <div class="col-md-4">
                   <div class="testimonial p-3">
                       <p>"An unforgettable stay! The villa was beautiful and the service was impeccable."</p>
-                      <h5>John Doe</h5>
+                      <h5>Julia Hudieb</h5>
                   </div>
               </div>
               <div class="col-md-4">
                   <div class="testimonial p-3">
                       <p>"The perfect getaway! We enjoyed every moment and will definitely come back."</p>
-                      <h5>Jane Smith</h5>
+                      <h5>Sahar Khatib</h5>
                   </div>
               </div>
               <div class="col-md-4">
                   <div class="testimonial p-3">
                       <p>"A truly exceptional experience. Highly recommend for anyone visiting Palestine."</p>
-                      <h5>Emily Johnson</h5>
+                      <h5>Ahmad Shobaki</h5>
                   </div>
               </div>
           </div>
@@ -94,7 +91,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
+  <footer class="bg-dark text-white text-center py-3" id = "footer">
       <p>&copy; 2024 StayInPalestine. All rights reserved.</p>
   </footer>
 </body>

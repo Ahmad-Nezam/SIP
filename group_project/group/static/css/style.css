@@ -1,13 +1,17 @@
-
+* {
+    margin: 0px;
+    padding: 0px;
+}
 
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh; /* Ensure the body takes up the full viewport height */
+    height: 100vh;
+   
 }
 
-/* Hero Section */
+
 .navbar {
     background: #ad184c;
     width: 100%;
@@ -19,22 +23,24 @@ body {
 }
 
 .navbar-brand {
-    color:#ff4b2b  !important;
+    color: #ff4b2b !important;
     font-weight: bold;
     font-size: x-large;
 }
 
-/* Change color of navbar links to red on hover */
+
 .navbar-nav .nav-link:hover {
     color: #ff4b2b !important;
     font-weight: bold;
 }
+
 .navbar-nav .nav-link {
     color: black !important;
 }
 
 .background-container {
-    background-image: url('/static/images/villa.jpg'); /* Make sure the path is correct */
+    background-image: url('../css/villa.jpg');
+ 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,8 +51,10 @@ body {
 
 .hero {
     color: white;
-    position: relative; /* Ensure the hero section is positioned on top of the background */
-    z-index: 2; /* Keeps the hero section on top of the background */
+    position: relative;
+   
+    z-index: 2;
+   
     text-align: center;
     width: 60%;
     margin-top: 17%;
@@ -55,7 +63,8 @@ body {
 }
 
 .hero-overlay {
-    background: rgba(94, 92, 92, 0.5); /* Dark overlay for text readability */
+    background: rgba(94, 92, 92, 0.5);
+   
     border-radius: 10px;
     padding: 20px;
 }
@@ -78,120 +87,52 @@ body {
     font-style: italic;
 }
 
-#nav{
-    position: fixed; /* Keeps the navbar at the top even when scrolling */
+#nav {
+    position: fixed;
+   
 }
 
-.btn-lg{
+.btn-lg {
     background-color: #ff4b2b;
     color: white;
     border-radius: 50%;
     height: 60px;
 }
+
 button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 20px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-}
-
-.view{
     border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
 }
 
-/* cards css  */
-
-/* Flex container for cards */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 20px;
+.view {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
 }
 
-/* Card container */
-.card {
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 300px;
-    text-align: center;
-    flex: 1 1 300px;
+.text-center {
+    color: #ff4b2b !important;
+    font-weight: bold;
 }
 
-/* Image styling with fixed size */
-.card-img-top {
-    width: 100%;
-    height: 200px; /* Fixed height */
-    object-fit: cover; /* Ensures the image covers the entire area without distortion */
-    border-bottom: 2px solid #ddd;
+#footer {
+    color: white !important;
+    font-weight: lighter;
 }
 
-/* Title and description */
-.card h1 {
-    font-size: 24px;
-    margin: 10px 0;
-    color: #333;
-}
-
-.card h2 {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #777;
-}
-
-/* Hover effects */
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Booking button */
-.card button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin: 15px 0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-/* Button hover effect */
-.card button:hover {
-    background-color: #45a049;
-}
-
-/* Adjustments for responsiveness */
-@media (max-width: 600px) {
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 100%;
-        margin: 10px 0;
-    }
-}
 

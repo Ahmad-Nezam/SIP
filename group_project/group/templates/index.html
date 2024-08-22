@@ -32,7 +32,7 @@
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
+              <a class="nav-link" href="{% url 'villa' %}">Search Villas</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">logout</a>
@@ -43,63 +43,63 @@
 
   
     <header class="hero">
-      <div class="hero-overlay">
-          <h1 class="display-4">Discover Your Perfect Villa</h1>
-          <p class="lead">Experience the charm and beauty of Palestine with our exclusive villas.</p>
-          <button type="submit"><a href="{% url 'villa' %}">Find Your Villa</a></button>
-      </div>
-    </header>
-  </div>
-
- 
-  <section class="container my-5">
-      <h2 class="text-center">Best Selling</h2>
-      <div class="row">
-      
-          <div class="col-md-4">
-              <div class="card mb-4">
-                  <img src="#" class="card-img-top" alt="Villa 1">
-                  <div class="card-body">
-                      <h5 class="card-title">Villa in Jerusalem</h5>
-                      <p class="card-text">A luxurious retreat in the historic heart of Jerusalem.</p>
-                      <button class = "view" type="submit">View Details</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-
-  <section class="bg-light py-5">
-      <div class="container">
-          <h2 class="text-center">What Our Guests Say</h2>
-          <div class="row">
-              <div class="col-md-4">
-                  <div class="testimonial p-3">
-                      <p>"An unforgettable stay! The villa was beautiful and the service was impeccable."</p>
-                      <h5>John Doe</h5>
-                  </div>
-              </div>
-              <div class="col-md-4">
-                  <div class="testimonial p-3">
-                      <p>"The perfect getaway! We enjoyed every moment and will definitely come back."</p>
-                      <h5>Jane Smith</h5>
-                  </div>
-              </div>
-              <div class="col-md-4">
-                  <div class="testimonial p-3">
-                      <p>"A truly exceptional experience. Highly recommend for anyone visiting Palestine."</p>
-                      <h5>Emily Johnson</h5>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-
-  <footer class="bg-dark text-white text-center py-3">
-      <p>&copy; 2024 StayInPalestine. All rights reserved.</p>
-  </footer>
+        <div class="hero-overlay">
+            <h1 class="display-4">Discover Your Perfect Villa</h1>
+            <p class="lead">Experience the charm and beauty of Palestine with our exclusive villas.</p>
+            <button type="submit"><a href="{% url 'villa' %}">Find your villa</a></button>
+        </div>
+      </header>
+    </div>
+  
+   
+    <section class="container my-5">
+        <h2 class="text-center">Best Selling</h2>
+        <div class="row">
+           
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'css/villa.jpg' %}" class="card-img-top" alt="Villa 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Villa in Jerusalem</h5>
+                        <p class="card-text">A luxurious retreat in the historic heart of Jerusalem.</p>
+                        <button class = "view" type="submit">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+   
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center">What Our Guests Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial p-3">
+                        <p>"An unforgettable stay! The villa was beautiful and the service was impeccable."</p>
+                        <h5>Julia Hudieb</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial p-3">
+                        <p>"The perfect getaway! We enjoyed every moment and will definitely come back."</p>
+                        <h5>Sahar Khatib</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial p-3">
+                        <p>"A truly exceptional experience. Highly recommend for anyone visiting Palestine."</p>
+                        <h5>Ahmad Shobaki</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+  
+    <footer class="bg-dark text-white text-center py-3" id = "footer">
+        <p>&copy; 2024 StayInPalestine. All rights reserved.</p>
+    </footer>
   <script src="static/js.js"></script>
 </body>
 </html>

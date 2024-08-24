@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,88 +8,90 @@
     {% load static %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/booking.css' %}">
-  
+
 
 </head>
+
 <body>
     <div class="background-container">
-     
-        <nav class="navbar navbar-expand-lg bg-light" >
+
+        <nav class="navbar navbar-expand-lg bg-light">
             <a class="navbar-brand" href="#">StayInPalestine</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'index' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'about' %}" >About us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">logout</a>
-                </li>
-              </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                    </li>
+                </ul>
             </div>
         </nav>
-          {% if messages %}
-      <div class="messages">
-          {% for message in messages %}
-              <div class="alert {{ message.tags }}">
-                  {{ message }}
-              </div>
-          {% endfor %}
-      </div>
-          {% endif %}
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
 
 
 
-<div class="booking-form">
-  <h2>Book Your Stay</h2>
-  <form id="bookingForm" method="POST" action="{% url 'booking' villa.id %}">
-      {% csrf_token %}
-      <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" id="firstName" name="firstName" required>
-      </div>
-      <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" required>
-      </div>
-      <div class="form-group">
-          <label for="phoneNumber">Phone Number</label>
-          <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}">
-      </div>
-      <div class="form-group">
-          <label for="startDate">Start Date</label>
-          <input type="datetime-local" id="startDate" name="startDate" required>
-      </div>
-      <div class="form-group">
-          <label for="endDate">End Date</label>
-          <input type="datetime-local" id="endDate" name="endDate" required>
-      </div>
-      <button type="submit" class="submit-btn">Book Now</button>
-     
-  </form>
-</div>
+        <div class="booking-form">
+            <h2>Book Your Stay</h2>
+            <form id="bookingForm" method="POST" action="{% url 'booking' villa.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}">
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="datetime-local" id="startDate" name="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="datetime-local" id="endDate" name="endDate" required>
+                </div>
+                <button type="submit" class="submit-btn">Book Now</button>
+
+            </form>
+        </div>
 
 
-        
-        
-        
-      
-
-    <script src="{% static 'css/booking.js' %}"></script>
 
 
-    </body>
-    </html>
 
+
+
+        <script src="{% static 'css/booking.js' %}"></script>
+
+
+</body>
+
+</html>

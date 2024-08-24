@@ -2,7 +2,8 @@ from django.shortcuts import render ,redirect
 from . import models
 from django.contrib import messages 
 from django.http import JsonResponse
-from .models import user , booking ,villas
+from .models import user , booking 
+from .models import villas
 import bcrypt
 
 def index(request):
@@ -72,6 +73,33 @@ def villa(request):
     return render(request, 'villas.html', {'villas': villa})
 
 
+def villa_list(request):
+    # Get distinct room counts for the filter dropdown
+    room_counts = villas.objects.values_list('rooms', flat=True).distinct().order_by('rooms')
+    
+    # Get the selected room filter from the query parameters
+    selected_rooms = request.GET.get('rooms', '')
+
+    # Filter villas based on the selected rooms or show all villas if no filter is applied
+    if selected_rooms:
+        villass = villas.objects.filter(rooms=selected_rooms)
+    else:
+        villass = villas.objects.all()
+
+    # Pass data to the template
+    context = {
+        'villass': villass,
+        'room_counts': room_counts,
+        'selected_rooms': selected_rooms,
+    }
+    
+    return render(request, 'villas.html', context)
+
+
+
+
+
+
 def details(request, villa_id):
     try:
       
@@ -114,6 +142,31 @@ def booking_view(request, villa_id):
     return render(request, 'booking.html', {'villa': villa})
 
 
+def booked(request):
+    booked_up = booking.objects.all()  
+    return render(request, 'booked.html', {'booked_up': booked_up})
+
+def edit_booking(request, id):
+    try:
+        bookingg = booking.objects.get(id=id)
+    except bookingg.DoesNotExist:
+        return redirect('booked')
+
+    if request.method == "POST":
+        bookingg.First_name = request.POST.get('firstName')
+        bookingg.Last_name = request.POST.get('lastName')
+        bookingg.phone = request.POST.get('phone')  
+        bookingg.date_start = request.POST.get('startDate')
+        bookingg.date_end = request.POST.get('endDate')
+        bookingg.save()
+        return redirect('booked')
+
+    return render(request, 'edit_booking.html', {'booking': booking})
+
+def delete_booking(request, id):
+    bookingg = models.get_booked(id = id)
+    bookingg.delete()
+    return redirect('booked')
 
 def logout(request):
     request.session.flush()

@@ -1,11 +1,3 @@
-function move() {
-    window.location.href = stationeryUrl;
-}
-
-function move3() {
-    window.location.href = toysUrl;
-} 
-
 document.addEventListener("DOMContentLoaded", function() {
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');

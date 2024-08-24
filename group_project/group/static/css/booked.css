@@ -1,0 +1,91 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 2px solid #dcdde1;
+    z-index: 1000; /* Ensure the navbar is above other content */
+}
+
+.background-container {
+    background-color: #f0f4f8; /* Light blue-gray background */
+    padding-top: 80px; /* Adjust padding to accommodate fixed navbar */
+    min-height: 100vh;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Table */
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead th {
+    background-color: #2c3e50; /* Darker blue-gray for the header */
+    color: #ffffff;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+    border-bottom: 2px solid #dcdde1;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #dcdde1;
+    color: #34495e;
+    font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f7f9fa; /* Light gray for alternating rows */
+}
+
+tbody tr:hover {
+    background-color: #eaeef2; /* Slight hover effect */
+}
+
+td a {
+    color: #3498db; /* Blue for links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* No Bookings Found */
+p {
+    text-align: center;
+    color: #e74c3c; /* Red for no bookings found */
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    thead th, tbody td {
+        font-size: 14px;
+    }
+}

@@ -8,60 +8,58 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" href="{% static 'css/villa.css' %}">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/villa.js' %}"></script>
 </head>
 <body>
     <div class="background-container">
-     
-        <nav class="navbar navbar-expand-lg bg-light" >
-          <a class="navbar-brand" href="#">StayInPalestine</a>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <a class="navbar-brand" href="#">StayInPalestine</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'index' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'about' %}" >About us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">logout</a>
-                </li>
-              </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'search' %}">Search Villas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+                <form class="form-inline ml-3" id="filter-form">
+                    <div class="form-group">
+                        <select class="form-control" name="rooms" id="room-filter">
+                            <option value="">Filter by number of rooms</option>
+                            {% for room_count in room_counts %}
+                            <option value="{{ room_count }}" {% if selected_rooms == room_count|stringformat:"s" %}selected{% endif %}>
+                                {{ room_count }} Rooms
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                </form>
             </div>
         </nav>
 
-
-<div class="card-container">
-  {% for villa in villas %}
-  <div class="card">
-      <form action="{% url 'villa' %}" method="POST">
-          {% csrf_token %}
-          <img class="card-img-top" src="{{ villa.image.url }}" alt="{{ villa.name }}">
-          <h1>{{ villa.name }}</h1>
-          <h2>{{ villa.desc }}</h2>
-          <h2>{{ villa.rooms }}</h2>
-
-          <input type="hidden" name="villa_id" value="{{ villa.id }}">
-          
-          <button type="submit">More Details</button>
-      </form>
-  </div>
-  {% endfor %}
-</div>
-
-
-      
-
-
-
+        <div class="card-container" style="padding-top: 80px;">
+            {% for villa in villass %}
+            <div class="card villa-card" data-rooms="{{ villa.rooms }}">
+                <form action="{% url 'villa' %}" method="POST">
+                    {% csrf_token %}
+                    <img class="card-img-top" src="{{ villa.image.url }}" alt="{{ villa.name }}">
+                    <h1>{{ villa.name }}</h1>
+                    <h2>{{ villa.desc }}</h2>
+                    <h2>{{ villa.rooms }} Rooms</h2>
+                    <input type="hidden" name="villa_id" value="{{ villa.id }}">
+                    <button type="submit">More Details</button>
+                </form>
+            </div>
+            {% empty %}
+            <p>No villas available.</p>
+            {% endfor %}
+        </div>
+    </div>
+    
 </body>
 </html>

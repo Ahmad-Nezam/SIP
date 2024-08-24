@@ -1,6 +1,3 @@
-
-
-
 function filterVillas() {
     var selectedRoom = $('#room-filter').val();
     

@@ -74,19 +74,14 @@ def villa(request):
 
 
 def villa_list(request):
-    # Get distinct room counts for the filter dropdown
     room_counts = villas.objects.values_list('rooms', flat=True).distinct().order_by('rooms')
-    
-    # Get the selected room filter from the query parameters
     selected_rooms = request.GET.get('rooms', '')
 
-    # Filter villas based on the selected rooms or show all villas if no filter is applied
     if selected_rooms:
         villass = villas.objects.filter(rooms=selected_rooms)
     else:
-        villass = villas.objects.all()
+        villass = villas.objects.all() 
 
-    # Pass data to the template
     context = {
         'villass': villass,
         'room_counts': room_counts,
@@ -94,10 +89,6 @@ def villa_list(request):
     }
     
     return render(request, 'villas.html', context)
-
-
-
-
 
 
 def details(request, villa_id):

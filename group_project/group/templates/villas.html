@@ -37,22 +37,24 @@
                 </form>
             </div>
         </nav>
+
         <div class="card-container" style="padding-top: 80px;">
-            {% for villa in villass %}
-            <div class="card">
-                <form action="{% url 'villa' %}" method="POST">
-                    {% csrf_token %}
-                    <img class="card-img-top" src="{{ villa.image.url }}" alt="{{ villa.name }}">
-                    <h1>{{ villa.name }}</h1>
-                    <h2>{{ villa.desc }}</h2>
-                    <h2>{{ villa.rooms }} Rooms</h2>
-                    <input type="hidden" name="villa_id" value="{{ villa.id }}">
-                    <button type="submit">More Details</button>
-                </form>
-            </div>
-            {% empty %}
-            <p>No villas available.</p>
-            {% endfor %}
+            {% if villass %}
+                {% for villa in villass %} 
+                <div class="card">
+                    <form action="{% url 'details' villa_id=villa.id %}" method="POST">
+                        {% csrf_token %}
+                        <img class="card-img-top" src="{{ villa.image.url }}" alt="{{ villa.name }}">
+                        <h1>{{ villa.name }}</h1>
+                        <h2>{{ villa.desc }}</h2>
+                        <h2>{{ villa.rooms }} Rooms</h2>
+                        <button type="submit">More Details</button>
+                    </form>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No villas available.</p>
+            {% endif %}
         </div>
     </div>
 </body>

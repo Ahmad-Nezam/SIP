@@ -61,7 +61,6 @@ class booking(models.Model):
 
 
 
-
 def create_user(request , pw_hash):
     First_name = request['First_name']
     Last_name = request['Last_name']

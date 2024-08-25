@@ -3,6 +3,7 @@ from . import models
 from django.contrib import messages 
 from django.http import JsonResponse
 from .models import user , booking ,villas
+from django.http import Http404
 import json
 from django.http import JsonResponse
 from django.core.mail import send_mail
@@ -74,22 +75,28 @@ def villa(request):
     if request.method == 'POST':
         villa_id = request.POST.get('villa_id')
         if villa_id:
-           
-            return redirect('details', villa_id=villa_id)
+            try:
+               
+                villa_detail = villas.objects.get(id=villa_id)
+                return render(request, 'villa_detail.html', {'villa': villa_detail})
+            except villas.DoesNotExist:
+               
+                raise Http404("Villa not found")
 
- 
-    villa = villas.objects.all()
-    return render(request, 'villas.html', {'villas': villa})
+    return redirect('villas')
 
 
 def villa_list(request):
+   
     room_counts = villas.objects.values_list('rooms', flat=True).distinct().order_by('rooms')
-    selected_rooms = request.GET.get('rooms', '')
+    selected_rooms = request.GET.get('rooms', '')  
 
     if selected_rooms:
+       
         villass = villas.objects.filter(rooms=selected_rooms)
     else:
-        villass = villas.objects.all() 
+       
+        villass = villas.objects.all()
 
     context = {
         'villass': villass,
@@ -102,14 +109,11 @@ def villa_list(request):
 
 def details(request, villa_id):
     try:
-      
-        villa = villas.objects.get(id=villa_id)
+        villa = villas.objects.get(id=villa_id)  
     except villas.DoesNotExist:
-       
         messages.error(request, 'The selected villa does not exist.')
-        return redirect('villa') 
+        return redirect('villas') 
 
-   
     return render(request, 'details.html', {'details': villa})
 
 
@@ -177,12 +181,12 @@ def send_comment_email(request):
             email = data.get('email')
             comment = data.get('comment')
 
-            # Send email (replace with your email settings)
+         
             send_mail(
                 'New Comment from ' + email,
                 comment,
-                'ahmad628go@gmail.com',  # Replace with your email address
-                ['recipient@example.com'],  # Replace with recipient email address
+                'ahmad628go@gmail.com', 
+                ['ahmad628og@gmail.com'],  
                 fail_silently=False,
             )
 

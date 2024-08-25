@@ -2,19 +2,28 @@ from django.shortcuts import render ,redirect
 from . import models
 from django.contrib import messages 
 from django.http import JsonResponse
-from .models import user , booking 
-from .models import villas
+from .models import user , booking ,villas
+import json
+from django.http import JsonResponse
+from django.core.mail import send_mail
 import bcrypt
 
 def index(request):
     First_name = request.session.get('First_name')
     Last_name = request.session.get('Last_name')
-    context = { 
-        'First_name' : First_name,
-        'Last_name' : Last_name ,
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
 
+    context = { 
+        'user_name': user_name,
     }
-    return render(request, 'index.html' ,context)
+    return render(request, 'index.html', context)
+
+
+
 
 def about(request):
     return render(request, 'about.html')
@@ -45,15 +54,15 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
         
-       
         users = models.user.objects.filter(email=email).first()
         
         if users and bcrypt.checkpw(password.encode(), users.password.encode()):
+          
             request.session['First_name'] = users.First_name
-            request.session['Last_name'] = users.Last_name   
-            First_name = request.session.get('First_name')
-            Last_name = request.session.get('Last_name')
-            return render(request, 'index.html' , {'First_name' : First_name , 'Last_name' : Last_name})
+            request.session['Last_name'] = users.Last_name
+            
+           
+            return redirect('index')
         else:   
             messages.error(request, 'Invalid email or password')
             return redirect('/login')
@@ -159,6 +168,30 @@ def delete_booking(request, id):
     bookingg.delete()
     return redirect('booked')
 
+
+
+def send_comment_email(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            email = data.get('email')
+            comment = data.get('comment')
+
+            # Send email (replace with your email settings)
+            send_mail(
+                'New Comment from ' + email,
+                comment,
+                'ahmad628go@gmail.com',  # Replace with your email address
+                ['recipient@example.com'],  # Replace with recipient email address
+                fail_silently=False,
+            )
+
+            return JsonResponse({'success': True})
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'error': 'Invalid JSON'})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+
 def logout(request):
     request.session.flush()
-    return redirect('/login') 
+    return redirect('/login')

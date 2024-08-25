@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,72 +8,126 @@
     {% load static %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
-</head>
-<body>
-  <div class="background-container">
-    
-    <nav class="navbar navbar-expand-lg bg-light" >
-        <a class="navbar-brand" href="#">StayInPalestine</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" >{{First_name}} {{Last_name}}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'index' %}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'booked' %}">Booked up</a>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}" >About us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'villa' %}">Search Villas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">logout</a>
-            </li>
-          </ul>
-        </div>
-    </nav>
 
-  
-    <header class="hero">
-        <div class="hero-overlay">
-            <h1 class="display-4">Discover Your Perfect Villa</h1>
-            <p class="lead">Experience the charm and beauty of Palestine with our exclusive villas.</p>
-            <button type="submit"><a href="{% url 'villa' %}">Find your villa</a></button>
-        </div>
-      </header>
+</head>
+
+<body>
+    <div class="background-container">
+
+        <nav class="navbar navbar-expand-lg bg-light">
+            <a class="navbar-brand" href="#">StayInPalestine</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            {% if user_name %}
+                                {{ user_name }}
+                            {% else %}
+                                Guest
+                            {% endif %}
+                        </a>
+                    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'booked' %}">Booked up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        {% if user_name %}
+                       
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        {% endif %}
+                    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'villa' %}">Search Villas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <header class="hero">
+            <div class="hero-overlay">
+                <h1 class="display-4">Discover Your Perfect Villa</h1>
+                <p class="lead">Experience the charm and beauty of Palestine with our exclusive villas.</p>
+                <button type="submit"><a href="{% url 'villa' %}">Find your villa</a></button>
+            </div>
+        </header>
     </div>
-  
-   
+
+
     <section class="container my-5">
-        <h2 class="text-center">Best Selling</h2>
+        <h2 class="text-center">Trending destinations</h2>
+        <h4 class="text-center">Most popular choices for travellers from the Palestinian Territory</h4>
         <div class="row">
-           
             <div class="col-md-4">
                 <div class="card mb-4">
                     <img src="{% static 'css/villa.jpg' %}" class="card-img-top" alt="Villa 1">
                     <div class="card-body">
-                        <h5 class="card-title">Villa in Jerusalem</h5>
-                        <p class="card-text">A luxurious retreat in the historic heart of Jerusalem.</p>
-                        <button class = "view" type="submit">View Details</button>
+                        <h5 class="card-title">Ramallah</h5>
+                        <p class="card-text">A luxurious villa in a modern place.</p>
+                        <button class="view" type="submit">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'css/villa.jpg' %}" class="card-img-top" alt="Villa 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Nablus</h5>
+                        <p class="card-text">A luxurious villa in a modern place.</p>
+                        <button class="view" type="submit">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'css/villa.jpg' %}" class="card-img-top" alt="Villa 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Jericho</h5>
+                        <p class="card-text">A luxurious villa in a modern place.</p>
+                        <button class="view" type="submit">View Details</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-  
-   
+
+    <section class="bg-secondary text-white py-5">
+        <div class="container">
+            <h2 class="text-center">Leave a Comment</h2>
+            <p class="text-center">We would love to hear from you! Please leave your email and comment below.</p>
+            <form id="commentForm" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Enter your comment" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </section>
+
+
+
     <section class="bg-light py-5">
         <div class="container">
             <h2 class="text-center">What Our Guests Say</h2>
@@ -98,11 +153,12 @@
             </div>
         </div>
     </section>
-  
-  
-    <footer class="bg-dark text-white text-center py-3" id = "footer">
+    
+
+    <footer class="bg-dark text-white text-center py-3" id="footer">
         <p>&copy; 2024 StayInPalestine. All rights reserved.</p>
     </footer>
-  <script src="static/js.js"></script>
+    <script src="static/js.js"></script>
 </body>
+
 </html>

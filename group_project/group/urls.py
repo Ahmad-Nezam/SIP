@@ -15,6 +15,7 @@ urlpatterns = [
     path('booked',views.booked,name='booked'),
     path('booking/edit/<int:id>/', views.edit_booking, name='edit_booking'),
     path('booking/delete/<int:id>/', views.delete_booking, name='delete_booking'),
+    path('api/send-comment', views.send_comment_email, name='send_comment_email'),
     path('logout/', views.logout , name='logout'),
     path('admin/', admin.site.urls),
 ]

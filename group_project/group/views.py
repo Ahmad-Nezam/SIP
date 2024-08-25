@@ -195,6 +195,9 @@ def send_comment_email(request):
             return JsonResponse({'success': False, 'error': 'Invalid JSON'})
     return JsonResponse({'success': False, 'error': 'Invalid request method'})
 
+def villas_by_location(request, location):
+    villass = villas.objects.filter(location=location)
+    return render(request, 'villas_by_location.html', {'villas': villass})
 
 def logout(request):
     request.session.flush()

@@ -28,7 +28,18 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'about.html')
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
+
+    context = { 
+        'user_name': user_name,
+    }
+    return render(request, 'about.html', context)
 
 
 
@@ -72,6 +83,7 @@ def login(request):
 
 
 def villa(request):
+    
     if request.method == 'POST':
         villa_id = request.POST.get('villa_id')
         if villa_id:
@@ -87,7 +99,14 @@ def villa(request):
 
 
 def villa_list(request):
-   
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
+    
     room_counts = villas.objects.values_list('rooms', flat=True).distinct().order_by('rooms')
     selected_rooms = request.GET.get('rooms', '')  
 
@@ -102,23 +121,38 @@ def villa_list(request):
         'villass': villass,
         'room_counts': room_counts,
         'selected_rooms': selected_rooms,
+        'user_name': user_name
     }
     
     return render(request, 'villas.html', context)
 
 
 def details(request, villa_id):
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
     try:
         villa = villas.objects.get(id=villa_id)  
     except villas.DoesNotExist:
         messages.error(request, 'The selected villa does not exist.')
         return redirect('villas') 
 
-    return render(request, 'details.html', {'details': villa})
+    return render(request, 'details.html', {'details': villa , 'user_name': user_name})
 
 
 
 def booking_view(request, villa_id):
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
     try:
         villa = villas.objects.get(id=villa_id)
     except villas.DoesNotExist:
@@ -140,13 +174,27 @@ def booking_view(request, villa_id):
             print(f"Booking creation failed: {e}")
             return JsonResponse({'success': False, 'error': f'An error occurred: {e}'})
     
-    return render(request, 'booking.html', {'villa': villa})
+    return render(request, 'booking.html', {'villa': villa ,'user_name': user_name})
 
 def booked(request):
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
     booked_up = booking.objects.all()  
-    return render(request, 'booked.html', {'booked_up': booked_up})
+    return render(request, 'booked.html', {'booked_up': booked_up ,'user_name': user_name})
 
 def edit_booking(request, id):
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
     try:
         bookingg = booking.objects.get(id=id)
     except bookingg.DoesNotExist:
@@ -161,7 +209,7 @@ def edit_booking(request, id):
         bookingg.save()
         return redirect('booked')
 
-    return render(request, 'edit_booking.html', {'booking': booking})
+    return render(request, 'edit_booking.html', {'booking': bookingg ,'user_name': user_name})
 
 def delete_booking(request, id):
     bookingg = models.get_booked(id = id)
@@ -192,8 +240,15 @@ def send_comment_email(request):
     return JsonResponse({'success': False, 'error': 'Invalid request method'})
 
 def villas_by_location(request, location):
+    First_name = request.session.get('First_name')
+    Last_name = request.session.get('Last_name')
+    
+    if First_name and Last_name:
+        user_name = f"{First_name} {Last_name}"
+    else:
+        user_name = None
     villass = villas.objects.filter(location=location)
-    return render(request, 'villas_by_location.html', {'villas': villass})
+    return render(request, 'villas_by_location.html', {'villas': villass ,'user_name': user_name})
 
 
 

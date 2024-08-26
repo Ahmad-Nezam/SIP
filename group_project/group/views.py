@@ -2,11 +2,12 @@ from django.shortcuts import render ,redirect
 from . import models
 from django.contrib import messages 
 from django.http import JsonResponse
-from .models import user , booking ,villas
+from .models import user , booking ,villas , FavoriteVilla
 from django.http import Http404
 import json
 from django.http import JsonResponse
 from django.core.mail import send_mail
+from django.urls import reverse
 import bcrypt
 
 def index(request):
@@ -122,12 +123,10 @@ def booking_view(request, villa_id):
     try:
         villa = villas.objects.get(id=villa_id)
     except villas.DoesNotExist:
-        messages.error(request, 'The selected villa does not exist.')
-        return redirect('some_error_page') 
+        return JsonResponse({'success': False, 'error': 'The selected villa does not exist.'})
 
     if request.method == 'POST':
         try:
-            
             Booking = booking(
                 First_name=request.POST['firstName'],
                 Last_name=request.POST['lastName'],
@@ -137,14 +136,12 @@ def booking_view(request, villa_id):
                 villas_id=villa
             )
             Booking.save()
-            messages.success(request, 'Your booking was successfully created!')
-            return redirect('booking', villa_id=villa_id)
+            return JsonResponse({'success': True, 'redirect_url': reverse('booking', args=[villa_id])})
         except Exception as e:
             print(f"Booking creation failed: {e}")
-            messages.error(request, f'An error occurred: {e}')
+            return JsonResponse({'success': False, 'error': f'An error occurred: {e}'})
     
     return render(request, 'booking.html', {'villa': villa})
-
 
 def booked(request):
     booked_up = booking.objects.all()  
@@ -198,6 +195,8 @@ def send_comment_email(request):
 def villas_by_location(request, location):
     villass = villas.objects.filter(location=location)
     return render(request, 'villas_by_location.html', {'villas': villass})
+
+
 
 def logout(request):
     request.session.flush()

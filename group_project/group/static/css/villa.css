@@ -94,7 +94,7 @@ body {
 }
 
 .form-inline .form-group, .form-inline .btn {
-    margin-bottom: 10px; /* Add some space between elements */
+    margin-bottom: 10px; 
 }
 
 .card-container {
@@ -102,6 +102,11 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     padding: 50px;
-    margin-top: 20px; /* Slightly increase the top margin */
+    margin-top: 20px; 
+}
+
+.favorite-icon {
+    z-index: 1000; /* Ensures the icon is on top of other elements */
+    position: relative; /* Make sure it remains in the flow of the document */
 }
 

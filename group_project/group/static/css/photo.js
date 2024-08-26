@@ -43,21 +43,15 @@ document.querySelector('.next').addEventListener('click', function() {
 
 
 function initMap() {
-    var villaLocation = {
-        lat: parseFloat('{{ details.latitude|default:"0" }}'),
-        lng: parseFloat('{{ details.longitude|default:"0" }}')
-    };
-
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: { lat: -33, lng: 151 },
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+        mapTypeIds: ["roadmap", "terrain"],
+      },
+    });
+  }
   
-    console.log('Latitude:', villaLocation.lat, 'Longitude:', villaLocation.lng);
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: villaLocation
-    });
-
-    var marker = new google.maps.Marker({
-        position: villaLocation,
-        map: map
-    });
-}
+  window.initMap = initMap;

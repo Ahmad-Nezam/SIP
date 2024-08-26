@@ -102,6 +102,62 @@
                 </div>
             </div>
         </div>
+        <section class="villas-offer-section py-5">
+            <div class="container">
+                <h2 class="text-center">Weekend Getaways</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="offer-card">
+                            <img src="{% static 'css/images/r.jpeg' %}" class="offer-img" alt="Offer 1">
+                            <div class="discount-badge">20% Off</div> <!-- Discount Badge -->
+                            <div class="offer-content">
+                                <h5 class="offer-title">AL-Shobaki villa in Ramallah</h5>
+                                <p class="offer-description">Experience unparalleled luxury and comfort with our exclusive villa in Ramallah. Special discounts available!</p>
+                                <a href="{% url 'villas_by_location' 'ramallah' %}" class="offer-btn">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="offer-card">
+                            <img src="{% static 'css/images/n.jpg' %}" class="offer-img" alt="Offer 2">
+                            <div class="discount-badge">15% Off</div> <!-- Discount Badge -->
+                            <div class="offer-content">
+                                <h5 class="offer-title">Seven-Star Chalet in Nablus</h5>
+                                <p class="offer-description">Escape to a charming and cozy retreat in Nablus. Book now to enjoy special rates and an unforgettable stay!</p>
+                                <a href="{% url 'villas_by_location' 'nablus' %}" class="offer-btn">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="offer-card">
+                            <img src="{% static 'css/images/j.jpg' %}" class="offer-img" alt="Offer 3">
+                            <div class="discount-badge">25% Off</div> <!-- Discount Badge -->
+                            <div class="offer-content">
+                                <h5 class="offer-title">Jericho Forests villa</h5>
+                                <p class="offer-description">elegance and tranquility at our Jericho villa. Take advantage of our limited-time offers and enjoy a premium experience!</p>
+                                <a href="{% url 'villas_by_location' 'jericho' %}" class="offer-btn">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="compact-promo-section">
+            <div class="container text-center">
+                <h2 class="promo-title">Save More on Your Weekend Getaway</h2>
+                <p class="promo-description">
+                    Sign in and save 10% or more on selected accommodations. 
+                </p>
+                <div class="promo-buttons">
+                    <a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
+                    <a href="{% url 'register' %}" class="btn btn-secondary">Create Account</a>
+                </div>
+            </div>
+        </section>
+        
+        
         
     </section>
     <section class="bg-light py-5">

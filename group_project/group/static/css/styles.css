@@ -1,22 +1,21 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
+    font-family: 'Arial', sans-serif; /* Apply font family to all elements */
 }
 
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     height: 100vh; /* Ensure the body takes up the full viewport height */
 }
-.name{
-    color:#ff4b2b  !important;
+
+.name {
+    color: #ff4b2b !important;
     font-weight: bold;
     font-size: large;
     margin-top: 5px;
 }
-
-
 
 /* Hero Section */
 .navbar {
@@ -30,7 +29,7 @@ body {
 }
 
 .navbar-brand {
-    color:#ff4b2b  !important;
+    color: #ff4b2b !important;
     font-weight: bold;
     font-size: x-large;
 }
@@ -40,12 +39,14 @@ body {
     color: #ff4b2b !important;
     font-weight: bold;
 }
+
 .navbar-nav .nav-link {
     color: black !important;
+    font-weight: bold!important;
 }
 
 .background-container {
-    background-image: url('/static/css/images/villa.jpg'); /* Make sure the path is correct */
+    background-image: url('/static/css/images/vI.jpg'); /* Make sure the path is correct */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -66,7 +67,7 @@ body {
 }
 
 .hero-overlay {
-    background: rgba(94, 92, 92, 0.5); /* Dark overlay for text readability */
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
     border-radius: 10px;
     padding: 20px;
 }
@@ -89,56 +90,57 @@ body {
     font-style: italic;
 }
 
-#nav{
+#nav {
     position: fixed; /* Keeps the navbar at the top even when scrolling */
 }
 
-.btn-lg{
+.btn-lg {
     background-color: #ff4b2b;
     color: white;
     border-radius: 50%;
     height: 60px;
 }
+
 button {
-               border-radius: 20px;
-               border: 1px solid #FF4B2B;
-               background-color: #FF4B2B;
-               color: #FFFFFF;
-               font-size: 20px;
-               font-weight: bold;
-               padding: 12px 45px;
-               letter-spacing: 1px;
-               text-transform: uppercase;
-               transition: transform 80ms ease-in;
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    
 }
 
-.view{
-    border-radius: 20px;
-               border: 1px solid #FF4B2B;
-               background-color: #FF4B2B;
-               color: #FFFFFF;
-               font-size: 12px;
-               font-weight: bold;
-               padding: 12px 45px;
-               letter-spacing: 1px;
-               text-transform: uppercase;
-               transition: transform 80ms ease-in;
+.view {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #ff4500; /* Button background */
+    color: #fff; /* Button text color */
+    border-radius: 20px!important;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
 }
-.text-center{
+
+.text-center {
     color: #ff4b2b !important;
     font-weight: bold;
+    margin-bottom: 40px;
 }
 
-#footer{
+#footer {
     color: white !important;
     font-weight: lighter;
 }
+
 #find {
     color: white;
-}
-
-.text-center{
-    margin-bottom: 40px;
 }
 
 /* Card Styling */
@@ -200,6 +202,7 @@ button {
     background-color: #ff4500; /* Darker orange on hover */
     color: #fff; /* Keep text white on hover */
 }
+
 /* Promo Email Section Styles */
 .promo-email-section {
     background-color: #f4f4f4; /* Light background for the section */
@@ -256,17 +259,178 @@ button {
     font-weight: bold;
     cursor: pointer;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 20px;
     transition: background-color 0.3s ease;
 }
 
 .promo-email-section .btn-primary:hover {
     background-color: #ff6347;
 }
-.welcome{
-    font-size: large    ;
+
+.welcome {
+    font-size: large;
     margin: 10px 600px 10px 10px;
     color: black;
     font-weight: bold;
-    
+}
+
+/* Villas Offer Section Styles */
+.villas-offer-section {
+    background-color: #f8f8f8; /* Light grey background */
+    padding: 60px 0;
+    border-radius: 15px;
+}
+
+.villas-offer-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Offer Card Styling */
+.offer-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Strong shadow for emphasis */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    background: linear-gradient(135deg, #e79e93 0%, #ff4500 100%); /* Gradient background */
+}
+
+.offer-card:hover {
+    transform: translateY(-10px); /* Lift the card slightly on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Card Image */
+.offer-img {
+    height: 200px;
+    object-fit: cover; /* Keep image aspect ratio while filling the space */
+    width: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.offer-card:hover .offer-img {
+    opacity: 0.8; /* Slightly darken image on hover */
+}
+
+/* Card Content */
+.offer-content {
+    padding: 20px;
+    background: #e2b8ab; /* Dark overlay for text readability */
+    color: #fff;
+    position: relative;
+}
+
+/* Discount Badge */
+.discount-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ff4500; /* Bright badge background */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* Title */
+.offer-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Description */
+.offer-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* Button */
+.offer-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #ff4500; /* Button background */
+    color: #fff; /* Button text color */
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.offer-btn:hover {
+    background-color: #ff6347; /* Lighter orange on hover */
+}
+
+/* Compact Promotional Section Styles */
+.compact-promo-section {
+    background-color: #f7f7f7; /* Light grey background */
+    padding: 30px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+    margin: 20px 0; /* Margin to separate from other content */
+}
+
+.promo-title {
+    font-size: 1.75rem;
+    color: #ff4b2b; /* Highlight color */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.promo-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.promo-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.btn-primary {
+    background-color: #ff4b2b;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #e63946;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: #333;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f1f1;
 }

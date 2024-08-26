@@ -53,23 +53,11 @@ def register(request):
 
 
 def login(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        
-        users = models.user.objects.filter(email=email).first()
-        
-        if users and bcrypt.checkpw(password.encode(), users.password.encode()):
-          
-            request.session['First_name'] = users.First_name
-            request.session['Last_name'] = users.Last_name
-            
-           
-            return redirect('index')
-        else:   
-            messages.error(request, 'Invalid email or password')
-            return redirect('/login')
+    
     return render(request, 'login.html')
+def about(request):
+    
+    return render(request, 'about.html')
 
 
 

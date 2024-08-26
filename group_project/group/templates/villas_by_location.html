@@ -7,7 +7,7 @@
     {% load static %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'css/location.css' %}">
 </head>
 <body>
     <div class="background-container">
@@ -35,23 +35,25 @@
             </div>
         </nav>        
 
-    <div class="details-info">
-       
-        {% for villa in villas %}
-            <h1>{{ villa.location }}</h1>
-            <img src="{{ villa.image.url }}" class="card-img-top" alt="Villa Image">
-            <h2>{{ villa.name }}</h2>
-            <h2>{{ villa.desc }}</h2>
-            <h2>Rooms: {{ villa.rooms }}</h2>
-            <h2>Status: {{ villa.status }}</h2>
-            <h2>Price: {{ villa.price }} $ per day</h2>
-            <div class="action-buttons">
-                <p>Villa ID: {{ villa.id }}</p>
-                <a href="{% url 'booking' villa.id %}" class="cardbutton2">Book</a>
-                <a href="{% url 'villas' %}" class="cardbutton2">Show all Villas</a>
-            </div>
-        {% endfor %}
-    </div>
-
+        <div class="villa-details">
+          {% for villa in villas %}
+              <div class="villa-card">
+                  <h1 class="villa-location">{{ villa.location }}</h1>
+                  <img src="{{ villa.image.url }}" class="villa-image" alt="Villa Image">
+                  <h2 class="villa-name">{{ villa.name }}</h2>
+                  <p class="villa-desc">{{ villa.desc }}</p>
+                  <p class="villa-rooms">Rooms: {{ villa.rooms }}</p>
+                  <p class="villa-status">Status: {{ villa.status }}</p>
+                  <p class="villa-price">Price: {{ villa.price }} $ per day</p>
+                  <div class="villa-actions">
+                      <p class="villa-id">Villa ID: {{ villa.id }}</p>
+                      <a href="{% url 'booking' villa.id %}" class="action-button">Book</a>
+                      <a href="{% url 'villas' %}" class="action-button">Show all Villas</a>
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+      
+</div>
     </body>
     </html>

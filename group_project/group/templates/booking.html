@@ -25,16 +25,37 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <p class="welcome">
+                            {% if user_name %}
+                              Welcome,  {{ user_name }} !
+                            {% else %}
+                                
+                            {% endif %}
+                        </p>
+                    
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'booked' %}">Booked up</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
+                        {% if user_name %}
+                       
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                        <a class="nav-link" href="{% url 'login' %}">Accounts</a>
+                        {% endif %}
+                    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'villas' %}">Search Villas</a>
                     </li>
                 </ul>
             </div>

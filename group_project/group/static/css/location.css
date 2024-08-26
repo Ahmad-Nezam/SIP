@@ -1,77 +1,112 @@
-/* General container for villa details */
-.villa-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
+/* location.css */
 
-/* Individual villa card */
-.villa-card {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Villa image styling */
-.villa-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-/* Styling for headings and text */
-.villa-location {
-    font-size: 2em;
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
     color: #333;
 }
 
+.background-container {
+    padding: 20px;
+}
+
+.navbar {
+    background: #ad184c;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    color: #ff4b2b !important;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+/* Change color of navbar links to red on hover */
+.navbar-nav .nav-link:hover {
+    color: #ff4b2b !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: black !important;
+    font-weight: bold!important;
+}
+
+.villa-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.villa-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+}
+
+.villa-card h1, .villa-card h2, .villa-card p {
+    margin: 10px 0;
+}
+
+.villa-location {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.villa-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 .villa-name {
-    font-size: 1.5em;
+    font-size: 1.25rem;
     color: #555;
 }
 
 .villa-desc {
-    font-size: 1em;
-    color: #777;
-    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .villa-rooms, .villa-status, .villa-price {
-    font-size: 1.2em;
-    color: #444;
-    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #333;
 }
 
-.villa-id {
-    font-size: 0.9em;
-    color: #888;
-    margin-bottom: 10px;
-}
-
-/* Action buttons styling */
 .villa-actions {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .action-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin: 5px;
-    font-size: 1em;
-    text-decoration: none;
+    background:#ff4b2b;
     color: #fff;
-    background: #007bff;
+    text-decoration: none;
     border-radius: 5px;
-    transition: background 0.3s ease;
+    font-weight: 500;
 }
 
 .action-button:hover {
-    background: #0056b3;
+    background: #ff4b2b;
+}
+
+.action-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ff4b2b;
 }

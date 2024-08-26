@@ -14,11 +14,34 @@ body {
     min-height: 100vh;
 }
 
-
 .navbar {
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ad184c;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    padding: 10px 20px;
 }
+
+.navbar-brand {
+    color: #ff4b2b !important;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+/* Change color of navbar links to red on hover */
+.navbar-nav .nav-link:hover {
+    color: #ff4b2b !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: black !important;
+    font-weight: bold!important;
+}
+
+
 
 
 .details {
@@ -111,52 +134,46 @@ body {
     background-color: #ff4b2b;
     transform: translateY(-3px);
 }
-
-
-
+/* Modal and slider container */
 .modal {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
-    z-index: 1000;
+    z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Modal content */
 .modal-content {
     position: relative;
-    background-color: #fff;
-    padding: 20px; 
-    border-radius: 15px;
-    max-width: 80%; 
     margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    overflow: hidden; 
+    max-width: 80%; /* Adjust as needed */
+    max-height: 80%; /* Adjust as needed */
 }
 
+/* Slider container */
 .slider {
-    max-width: 100%;
     position: relative;
     display: flex;
     overflow: hidden;
+    max-width:  100%;
+    max-height: 100%;; /* Ensures slider takes up full height */
 }
 
-
+/* Slider images */
 .slider-image {
-    min-width: 1200px;
+    max-width:  100%;
+    max-height: 100%; /* Ensures the image takes up full height of the container */
+    display: block; /* Ensures each image occupies its own space */
+    object-fit: cover; /* Ensures the image covers the entire container */
     transition: transform 0.5s ease;
 }
 
-
+/* Navigation arrows */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -169,7 +186,7 @@ body {
     transition: 0.3s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
-    z-index: 100; 
+    z-index: 100;
 }
 
 .prev {
@@ -185,6 +202,37 @@ body {
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    font-size: 24px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 101; 
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .features {
     display: flex;

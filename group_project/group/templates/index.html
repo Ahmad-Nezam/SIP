@@ -23,13 +23,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link">
+                        <p class="welcome">
                             {% if user_name %}
-                                {{ user_name }}
+                              Welcome,  {{ user_name }} !
                             {% else %}
-                                Guest
+                                
                             {% endif %}
-                        </a>
+                        </p>
                     
                     </li>
                     <li class="nav-item">
@@ -48,7 +48,7 @@
                     {% else %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'login' %}">Accounts</a>
                         {% endif %}
                     
                     </li>
@@ -64,70 +64,102 @@
             <div class="hero-overlay">
                 <h1 class="display-4">Discover Your Perfect Villa</h1>
                 <p class="lead">Experience the charm and beauty of Palestine with our exclusive villas.</p>
-                <button type="submit"><a href="{% url 'villas' %}">Find your villa</a></button>
+                <button type="submit"><a id= "find" href="{% url 'villas' %}">Find your villa</a></button>
             </div>
         </header>
     </div>
 
 
     <section class="container my-5">
-        <h2 class="text-center">Trending destinations</h2>
-        <h4 class="text-center">Most popular choices for travellers from the Palestinian Territory</h4>
+        <h2 class="text-center">Where do you prefer to go?</h2>
+        
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="{% static 'css/ramallah.jpg' %}" class="card-img-top" alt="Villa 1">
+                    <img src="{% static 'css/ramallah.jpg' %}" class="card-img-top" alt="Villa in Ramallah">
                     <div class="card-body">
                         <h5 class="card-title">Ramallah</h5>
-                      
                         <a href="{% url 'villas_by_location' 'ramallah' %}" class="view">View Details</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="{% static 'css/nablus.jpg' %}" class="card-img-top" alt="Villa 1">
+                    <img src="{% static 'css/nablus.png' %}" class="card-img-top" alt="Villa in Nablus">
                     <div class="card-body">
                         <h5 class="card-title">Nablus</h5>
-                       
                         <a href="{% url 'villas_by_location' 'Nablus' %}" class="view">View Details</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="{% static 'css/jericho.jpg' %}" class="card-img-top" alt="Villa 1">
+                    <img src="{% static 'css/jericho.jpg' %}" class="card-img-top" alt="Villa in Jericho">
                     <div class="card-body">
                         <h5 class="card-title">Jericho</h5>
-            
                         <a href="{% url 'villas_by_location' 'jerico' %}" class="view">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="bg-secondary text-white py-5">
-        <div class="container">
-            <h2 class="text-center">Leave a Comment</h2>
-            <p class="text-center">We would love to hear from you! Please leave your email and comment below.</p>
-            <form id="commentForm" method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        <section class="villas-offer-section py-5">
+            <div class="container">
+                <h2 class="text-center">Weekend Getaways</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="offer-card">
+                            <img src="{% static 'css/r.jpeg' %}" class="offer-img" alt="Offer 1">
+                            <div class="discount-badge">20% Off</div> <!-- Discount Badge -->
+                            <div class="offer-content">
+                                <h5 class="offer-title">AL-Shobaki villa in Ramallah</h5>
+                                <p class="offer-description">Experience unparalleled luxury and comfort with our exclusive villa in Ramallah. Special discounts available!</p>
+                                <a href="{% url 'villas_by_location' 'ramallah' %}" class="offer-btn">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="offer-card">
+                            <img src="{% static 'css/n.jpg' %}" class="offer-img" alt="Offer 2">
+                            <div class="discount-badge">15% Off</div> <!-- Discount Badge -->
+                            <div class="offer-content">
+                                <h5 class="offer-title">Seven-Star Chalet in Nablus</h5>
+                                <p class="offer-description">Escape to a charming and cozy retreat in Nablus. Book now to enjoy special rates and an unforgettable stay!</p>
+                                <a href="{% url 'villas_by_location' 'nablus' %}" class="offer-btn">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="offer-card">
+                            <img src="{% static 'css/j.jpg' %}" class="offer-img" alt="Offer 3">
+                            <div class="discount-badge">25% Off</div> <!-- Discount Badge -->
+                            <div class="offer-content">
+                                <h5 class="offer-title">Jericho Modern Forests villa</h5>
+                                <p class="offer-description">elegance and tranquility at our Jericho villa. Take advantage of our limited-time offers and enjoy a premium experience!</p>
+                                <a href="{% url 'villas_by_location' 'jerico' %}" class="offer-btn">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="comment">Comment:</label>
-                    <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Enter your comment" required></textarea>
+            </div>
+        </section>
+        
+        
+        <section class="compact-promo-section">
+            <div class="container text-center">
+                <h2 class="promo-title">Save More on Your Weekend Getaway</h2>
+                <p class="promo-description">
+                    Sign in and save 10% or more on selected accommodations. 
+                </p>
+                <div class="promo-buttons">
+                    <a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
+                    <a href="{% url 'register' %}" class="btn btn-secondary">Create Account</a>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+            </div>
+        </section>
+        
+        
+        
     </section>
-
-
-
     <section class="bg-light py-5">
         <div class="container">
             <h2 class="text-center">What Our Guests Say</h2>
@@ -153,6 +185,30 @@
             </div>
         </div>
     </section>
+
+
+    <section class="promo-email-section">
+        <div class="container">
+            <div class="email-box">
+                <p class="text-center">Get the latest updates and promotions directly to your inbox!</p>
+                <form id="subscribeForm" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+
+    
+    
+
+
+
     
 
     <footer class="bg-dark text-white text-center py-3" id="footer">

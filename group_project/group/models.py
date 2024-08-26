@@ -58,7 +58,9 @@ class booking(models.Model):
     date_end = models.DateTimeField()
     villas_id = models.ForeignKey(villas, on_delete=models.CASCADE)
 
-
+class UserProfile(models.Model):
+    user = models.OneToOneField(user, on_delete=models.CASCADE)
+    favorites = models.ManyToManyField(villas, related_name='favorited_by', blank=True)
 
 
 def create_user(request , pw_hash):

@@ -45,16 +45,20 @@ class villas(models.Model):
     name = models.CharField(max_length=30)
     desc = models.TextField()
     rooms = models.IntegerField()
-    user_id = models.ForeignKey(user , on_delete = models.CASCADE)
+    status = models.CharField(max_length=20) 
+    location = models.CharField(max_length=30) 
+    price = models.IntegerField()
+    user_id = models.ForeignKey(user, on_delete=models.CASCADE)
 
 class booking(models.Model):
     First_name = models.CharField(max_length=30)
     Last_name = models.CharField(max_length=30)
     phone = models.IntegerField()
-    status = models.CharField(max_length=20) 
-    date_start = models.DateTimeField() 
-    date_end = models.DateTimeField() 
-    villas_id = models.ForeignKey(villas , on_delete = models.CASCADE) 
+    date_start = models.DateTimeField()
+    date_end = models.DateTimeField()
+    villas_id = models.ForeignKey(villas, on_delete=models.CASCADE)
+
+
 
 
 def create_user(request , pw_hash):
@@ -63,7 +67,47 @@ def create_user(request , pw_hash):
     email = request['email']
     password = request['password']
     conf_password = request['conf_password']
-    return user.objects.create(First_name = First_name , Last_name = Last_name , email = email ,  conf_password = pw_hash , password = pw_hash)
+    return user.objects.create(First_name = First_name,
+                                Last_name = Last_name, 
+                                email = email,  
+                                conf_password = pw_hash, 
+                                password = pw_hash) 
+
+
+
+
+def create_booking(request):
+   
+    first_name = request.POST.get('firstName')
+    last_name = request.POST.get('lastName')
+    phone_number = request.POST.get('phoneNumber')
+    start_date = request.POST.get('startDate')
+    end_date = request.POST.get('endDate')
+    villas_id = request.POST.get('villas_id')
+
+   
+    try:
+        villa_instance = villas.objects.get(id=villas_id)
+    except villas.DoesNotExist:
+        raise ValueError("Invalid villa ID")
+
+  
+    booking_instance = booking(
+        First_name=first_name,
+        Last_name=last_name,
+        phone=phone_number,
+        date_start=start_date,
+        date_end=end_date,
+        villas_id=villa_instance 
+    )
+    
+ 
+    booking_instance.save()
+
+    return booking_instance  
 
 def get_villa():
-    return villas.objects.all()
+    return villas.objects.all() 
+
+def get_booked(id):
+    return booking.objects.get(id=id)

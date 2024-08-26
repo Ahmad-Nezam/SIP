@@ -9,6 +9,14 @@ body {
     padding: 0;
     height: 100vh; /* Ensure the body takes up the full viewport height */
 }
+.name{
+    color:#ff4b2b  !important;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 5px;
+}
+
+
 
 /* Hero Section */
 .navbar {
@@ -124,4 +132,141 @@ button {
 #footer{
     color: white !important;
     font-weight: lighter;
+}
+#find {
+    color: white;
+}
+
+.text-center{
+    margin-bottom: 40px;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift the card slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+/* Card Image */
+.card-img-top {
+    height: 200px;
+    object-fit: cover; /* Keep image aspect ratio while filling the space */
+}
+
+/* Card Body */
+.card-body {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    transition: background-color 0.3s ease;
+}
+
+.card:hover .card-body {
+    background-color: #f0f0f0; /* Subtle change on hover */
+}
+
+/* Card Title */
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* View Details Link */
+.view {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff6347; /* Button background */
+    color: #fff; /* Button text color */
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover */
+    text-decoration: none;
+}
+
+.view:hover {
+    background-color: #ff4500; /* Darker orange on hover */
+    color: #fff; /* Keep text white on hover */
+}
+/* Promo Email Section Styles */
+.promo-email-section {
+    background-color: #f4f4f4; /* Light background for the section */
+    padding: 60px 0;
+}
+
+.promo-email-section .container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Email Box Styling Specific to Promo Section */
+.promo-email-section .email-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for the box */
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.promo-email-section p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Form Styles Specific to Promo Section */
+.promo-email-section .form-group label {
+    font-size: 1rem;
+    color: #333;
+}
+
+.promo-email-section .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.promo-email-section .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Button Styles Specific to Promo Section */
+.promo-email-section .btn-primary {
+    background-color: #ff6347;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.promo-email-section .btn-primary:hover {
+    background-color: #ff6347;
+}
+.welcome{
+    font-size: large    ;
+    margin: 10px 600px 10px 10px;
+    color: black;
+    font-weight: bold;
+    
 }

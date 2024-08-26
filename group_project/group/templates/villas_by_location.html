@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villas - StayInPalestine</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/villa.css' %}">
+</head>
+<body>
+    <div class="background-container">
+     
+        <nav class="navbar navbar-expand-lg bg-light" >
+            <a class="navbar-brand" href="#">StayInPalestine</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}" >About us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'search' %}">Search Villas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                </li>
+              </ul>
+            </div>
+        </nav>        
+
+    <div class="details-info">
+       
+        {% for villa in villas %}
+            <h1>{{ villa.location }}</h1>
+            <img src="{{ villa.image.url }}" class="card-img-top" alt="Villa Image">
+            <h2>{{ villa.name }}</h2>
+            <h2>{{ villa.desc }}</h2>
+            <h2>Rooms: {{ villa.rooms }}</h2>
+            <h2>Status: {{ villa.status }}</h2>
+            <h2>Price: {{ villa.price }} $ per day</h2>
+            <div class="action-buttons">
+                <p>Villa ID: {{ villa.id }}</p>
+                <a href="{% url 'booking' villa.id %}" class="cardbutton2">Book</a>
+                <a href="{% url 'villas' %}" class="cardbutton2">Show all Villas</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    </body>
+    </html>

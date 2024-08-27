@@ -30,7 +30,7 @@ body {
     font-size: x-large;
 }
 
-/* Change color of navbar links to red on hover */
+
 .navbar-nav .nav-link:hover {
     color: #ff4b2b !important;
     font-weight: bold;
@@ -132,9 +132,9 @@ body {
     background-color: #ff4b2b;
     transform: translateY(-3px);
 }
-/* Modal and slider container */
+
 .modal {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     z-index: 100;
     left: 0;
@@ -145,15 +145,15 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Modal content */
+
 .modal-content {
     position: relative;
     margin: auto;
-    max-width: 80%; /* Adjust as needed */
-    max-height: 80%; /* Adjust as needed */
+    max-width: 80%; 
+    max-height: 80%; 
 }
 
-/* Slider container */
+
 .slider {
     position: relative;
     display: block;
@@ -163,16 +163,16 @@ body {
 
 }
 
-/* Slider images */
+
 .slider-image {
     max-width:  100%;
-    max-height: 100%; /* Ensures the image takes up full height of the container */
-    display: block; /* Ensures each image occupies its own space */
-    object-fit: cover; /* Ensures the image covers the entire container */
+    max-height: 100%; 
+    display: block; 
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-/* Navigation arrows */
+
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -205,7 +205,7 @@ body {
 
 .close-btn {
     position: absolute;
-    top: 10px; 
+    top: 20px; 
     right: 10px; 
     font-size: 24px;
     color: #000;
@@ -238,7 +238,7 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 40px;
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
 .feature-card {
@@ -246,8 +246,8 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #fefefe;
-    padding: 25px;
-    margin: 20px;
+    padding: 20px; 
+    margin: 10px;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     width: 160px;

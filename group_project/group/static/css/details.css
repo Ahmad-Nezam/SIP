@@ -290,7 +290,10 @@ body {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     background-color: #e94b2f;
 }
-
+#map {
+    height: 400px; /* or any other desired height */
+    width: 100%; /* or any other desired width */
+  }
 .details {
     display: flex;
     flex-wrap: wrap;

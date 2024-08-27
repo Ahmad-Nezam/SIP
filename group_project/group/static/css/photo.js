@@ -6,15 +6,20 @@ function plusSlides(n) {
 }
 
 function showSlides(n) {
-    let i;
     let slides = document.getElementsByClassName("slider-image");
 
-    if (n >= slides.length) { slideIndex = 0; }
-    if (n < 0) { slideIndex = slides.length - 1; }
-
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.transform = `translateX(-${slideIndex * 100}%)`;
+    if (n >= slides.length) {
+        slideIndex = 0;
     }
+    if (n < 0) {
+        slideIndex = slides.length - 1;
+    }
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slides[slideIndex].style.display = "block"; 
 }
 
 function openModal() {
@@ -25,23 +30,19 @@ function closeModal() {
     document.getElementById('photoModal').style.display = 'none';
 }
 
-
 window.onclick = function(event) {
     if (event.target == document.getElementById('photoModal')) {
         closeModal();
     }
 }
 
-
 document.querySelector('.prev').addEventListener('click', function() {
-    plusSlides(-1); 
+    plusSlides(-1);
 });
 
 document.querySelector('.next').addEventListener('click', function() {
-    plusSlides(1); 
+    plusSlides(1);
 });
-
-
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 4,

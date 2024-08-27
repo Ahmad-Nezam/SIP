@@ -156,10 +156,11 @@ body {
 /* Slider container */
 .slider {
     position: relative;
-    display: flex;
+    display: block;
     overflow: hidden;
     max-width:  100%;
-    max-height: 100%;; /* Ensures slider takes up full height */
+    max-height: 100%;; 
+
 }
 
 /* Slider images */

@@ -27,6 +27,7 @@ def index(request):
 
 
 
+
 def about(request):
     First_name = request.session.get('First_name')
     Last_name = request.session.get('Last_name')

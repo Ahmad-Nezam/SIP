@@ -15,7 +15,7 @@
     <div class="background-container">
 
         <nav class="navbar navbar-expand-lg bg-light">
-            <a class="navbar-brand" href="{% url 'index' %}">StayInPalestine</a>
+            <a class="navbar-brand" href="#">StayInPalestine</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -106,42 +106,121 @@
             <div class="container">
                 <h2 class="text-center">Weekend Getaways</h2>
                 <div class="row">
+                  
                     <div class="col-md-4">
                         <div class="offer-card">
                             <img src="{% static 'css/r.jpeg' %}" class="offer-img" alt="Offer 1">
-                            <div class="discount-badge">20% Off</div> <!-- Discount Badge -->
+                            <div class="discount-badge">20% Off</div>
                             <div class="offer-content">
                                 <h5 class="offer-title">AL-Shobaki villa in Ramallah</h5>
                                 <p class="offer-description">Experience unparalleled luxury and comfort with our exclusive villa in Ramallah. Special discounts available!</p>
-                                <a href="{% url 'villas_by_location' 'ramallah' %}" class="offer-btn">Explore Now</a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offer1Modal">View Details</button>
                             </div>
                         </div>
                     </div>
+                   
                     <div class="col-md-4">
                         <div class="offer-card">
                             <img src="{% static 'css/n.jpg' %}" class="offer-img" alt="Offer 2">
-                            <div class="discount-badge">15% Off</div> <!-- Discount Badge -->
+                            <div class="discount-badge">15% Off</div>
                             <div class="offer-content">
                                 <h5 class="offer-title">Seven-Star Chalet in Nablus</h5>
                                 <p class="offer-description">Escape to a charming and cozy retreat in Nablus. Book now to enjoy special rates and an unforgettable stay!</p>
-                                <a href="{% url 'villas_by_location' 'nablus' %}" class="offer-btn">Explore Now</a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offer2Modal">View Details</button>
                             </div>
                         </div>
                     </div>
+                   
                     <div class="col-md-4">
                         <div class="offer-card">
                             <img src="{% static 'css/j.jpg' %}" class="offer-img" alt="Offer 3">
-                            <div class="discount-badge">25% Off</div> <!-- Discount Badge -->
+                            <div class="discount-badge">25% Off</div> 
                             <div class="offer-content">
                                 <h5 class="offer-title">Jericho Modern Forests villa</h5>
-                                <p class="offer-description">elegance and tranquility at our Jericho villa. Take advantage of our limited-time offers and enjoy a premium experience!</p>
-                                <a href="{% url 'villas_by_location' 'jerico' %}" class="offer-btn">Explore Now</a>
+                                <p class="offer-description">Elegance and tranquility at our Jericho villa. Take advantage of our limited-time offers and enjoy a premium experience!</p>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offer3Modal">View Details</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+       
+        <div class="modal fade" id="offer1Modal" tabindex="-1" role="dialog" aria-labelledby="offer1ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="offer1ModalLabel">AL-Shobaki Villa in Ramallah</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{% static 'css/r.jpeg' %}" class="img-fluid" alt="AL-Shobaki Villa in Ramallah">
+                        <h6>Offer Details:</h6>
+                        <p>Experience unparalleled luxury and comfort with our exclusive villa in Ramallah. Special discounts available!</p>
+                        <p><strong>Discount:</strong> 20% Off</p>
+                        <p><strong>Price:</strong> 700 NIS per night</p> 
+                        <p><strong>Amenities:</strong> Private pool, Free WiFi, Breakfast included</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+     
+        <div class="modal fade" id="offer2Modal" tabindex="-1" role="dialog" aria-labelledby="offer2ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="offer2ModalLabel">Seven-Star Chalet in Nablus</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{% static 'css/n.jpg' %}" class="img-fluid" alt="Seven-Star Chalet in Nablus">
+                        <h6>Offer Details:</h6>
+                        <p>Escape to a charming and cozy retreat in Nablus. Book now to enjoy special rates and an unforgettable stay!</p>
+                        <p><strong>Discount:</strong> 15% Off</p>
+                        <p><strong>Price:</strong> 850 NIS per night</p> 
+                        <p><strong>Amenities:</strong> Scenic views, Spa access, Luxury amenities</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      
+        <div class="modal fade" id="offer3Modal" tabindex="-1" role="dialog" aria-labelledby="offer3ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="offer3ModalLabel">Jericho Forests Villa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{% static 'css/j.jpg' %}" class="img-fluid" alt="Jericho Forests Villa">
+                        <h6>Offer Details:</h6>
+                        <p>Elegance and tranquility at our Jericho villa. Take advantage of our limited-time offers and enjoy a premium experience!</p>
+                        <p><strong>Discount:</strong> 25% Off</p>
+                        <p><strong>Price:</strong> 800 NIS per night</p> 
+                        <p><strong>Amenities:</strong> Private gardens, Gourmet kitchen, Quiet surroundings</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         
         
         <section class="compact-promo-section">
@@ -204,12 +283,204 @@
     </section>
     
 
-    
-    
+  
+<section class="help-support-section bg-light py-5">
+    <div class="container">
+        <h2 class="text-center">Help & Support</h2>
+        <div class="row">
+         
+            <div class="col-md-3">
+                <h4>FAQs</h4>
+                <p>Find answers to common questions about our villas and services.</p>
+                <button type="button" class="btn btn-primary btn-no-hover" data-toggle="modal" data-target="#faqModal">
+                    View FAQs
+                </button>
+            </div>
+
+          
+            <div class="col-md-3">
+                <h4>Contact Us</h4>
+                <p>Need assistance? Our team is here to help!</p>
+                <button type="button" class="btn btn-primary btn-no-hover" data-toggle="modal" data-target="#contactModal">
+                    Contact Us
+                </button>
+            </div>
+
+            
+            <div class="col-md-3">
+                <h4>Follow Up</h4>
+                <p>Already contacted us? Track the progress of your inquiry.</p>
+                <button type="button" class="btn btn-primary btn-no-hover" data-toggle="modal" data-target="#followUpModal">
+                    Follow Up
+                </button>
+            </div>
+
+
+            <div class="col-md-3">
+                <h4>Share Your Feedback</h4>
+                <p>We value your opinion and would love to hear your thoughts!</p>
+                <button type="button" class="btn btn-primary btn-no-hover" data-toggle="modal" data-target="#feedbackModal">
+                    Share Your Feedback
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="faqModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="faqModalLabel">Frequently Asked Questions</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6>1. What is the booking process?</h6>
+                <p>You can search for available villas, select your preferred one, and follow the booking steps to confirm.</p>
+                <h6>2. Are there any hidden fees?</h6>
+                <p>No, all fees are displayed transparently during the booking process.</p>
+                <h6>3. How can I cancel a booking?</h6>
+                <p>You can cancel a booking through your account dashboard or by contacting customer service.</p>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h6>Call Center</h6>
+                <p>For assistance, please call us at:</p>
+                <p><strong>+972 599 123 456</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="followUpModal" tabindex="-1" role="dialog" aria-labelledby="followUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="followUpModalLabel">Follow Up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="followUpForm" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" class="form-control" id="firstName" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" class="form-control" id="lastName" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="tel" class="form-control" id="phoneNumber" name="phone_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">Share Your Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="feedbackForm" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="satisfaction">How satisfied are you with "StayInPalestine" in general?</label>
+                        <select class="form-control" id="satisfaction" name="satisfaction" required>
+                            <option value="" disabled selected>Select your rating</option>
+                            <option value="1">1 - Very Unsatisfied</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 - Very Satisfied</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recommendation">Do you recommend "StayInPalestine" to your family and friends?</label>
+                        <select class="form-control" id="recommendation" name="recommendation" required>
+                            <option value="" disabled selected>Select your rating</option>
+                            <option value="1">1 - Not at all likely</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10 - Extremely likely</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="easeOfUse">How easy is it for you to use our website?</label>
+                        <select class="form-control" id="easeOfUse" name="ease_of_use" required>
+                            <option value="" disabled selected>Select your rating</option>
+                            <option value="1">1 - Very Difficult</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7 - Very Easy</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <footer class="bg-dark text-white text-center py-3" id="footer">
         <p>&copy; 2024 StayInPalestine. All rights reserved.</p>

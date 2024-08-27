@@ -2,7 +2,7 @@ from django.shortcuts import render ,redirect
 from . import models
 from django.contrib import messages 
 from django.http import JsonResponse
-from .models import user , booking ,villas , FavoriteVilla
+from .models import user , booking ,villas , FollowUp
 from django.http import Http404
 import json
 from django.http import JsonResponse
@@ -251,6 +251,24 @@ def villas_by_location(request, location):
     villass = villas.objects.filter(location=location)
     return render(request, 'villas_by_location.html', {'villas': villass ,'user_name': user_name})
 
+
+def follow_up(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        phone_number = request.POST.get('phone_number')
+        description = request.POST.get('description')
+
+        FollowUp.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            phone_number=phone_number,
+            description=description
+        )
+
+        return JsonResponse({'message': 'Success'})
+
+    return render(request, 'index.html')
 
 
 def logout(request):

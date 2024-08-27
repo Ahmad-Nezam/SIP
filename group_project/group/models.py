@@ -58,9 +58,15 @@ class booking(models.Model):
     date_end = models.DateTimeField()
     villas_id = models.ForeignKey(villas, on_delete=models.CASCADE)
 
-class FavoriteVilla(models.Model):
-    user = models.ForeignKey(user, on_delete=models.CASCADE)
-    villa = models.ForeignKey('villas', on_delete=models.CASCADE)
+class FollowUp(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=15)
+    description = models.TextField()
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 
 def create_user(request , pw_hash):

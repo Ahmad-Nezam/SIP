@@ -7,6 +7,8 @@
     <title>Villa Booking in Palestine</title>
     {% load static %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
@@ -389,7 +391,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="followUpForm" method="POST">
+                <form id="followUpForm" method="POST" action="{% url 'follow_up' %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="firstName">First Name:</label>
@@ -416,6 +418,40 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('followUpForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    var form = event.target;
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        Swal.fire({
+            title: 'Thank you for contacting us!',
+            text: 'We Will Contact You Soon',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            $('#followUpModal').modal('hide'); 
+            form.reset(); 
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+</script>
+
 
 
 <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
@@ -489,6 +525,8 @@
         <p>&copy; 2024 StayInPalestine. All rights reserved.</p>
     </footer>
     <script src="static/js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

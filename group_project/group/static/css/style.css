@@ -245,8 +245,8 @@ button {
 }
 
 .promo-email-section .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #ff6347;
+    box-shadow: 0 0 5px #ff6347;
     outline: none;
 }
 
@@ -441,7 +441,6 @@ button {
 .modal-content {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    align-items: center;
 }
 
 .modal-header {
@@ -451,20 +450,17 @@ button {
 .modal-title {
     font-size: 1.5rem; 
     font-weight: bold;
-   
 }
 
 .modal-body {
-    
-    font-size: 1.2rem; 
+    font-size: 1.1rem; 
 }
 
 .modal-body img {
-    width: 650px;
-    height: 350px; 
+    width: 700px;
+    height: 400px; 
     border-radius: 4px;
-    margin-left: 30px;
-    margin-bottom: 25px;
+
 }
 
 .modal-footer {
@@ -473,12 +469,20 @@ button {
 }
 
 .btn-secondary {
-    background-color: #e63946; 
+    background-color: #ff4b2b; 
     border-color: #e63946;
     color: white;
 }
 
 .btn-secondary:hover {
-    background-color: #cf505b; 
-    border-color: #cf505b;
+    background-color: #e63946; 
+    border-color: #e63946;
 }
+
+
+
+
+
+
+
+

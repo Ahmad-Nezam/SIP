@@ -1,13 +1,13 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: 'Arial', sans-serif; /* Apply font family to all elements */
+    font-family: 'Arial', sans-serif; 
 }
 
 body {
     margin: 0;
     padding: 0;
-    height: 100vh; /* Ensure the body takes up the full viewport height */
+    height: 100vh; 
 }
 
 .name {
@@ -17,7 +17,7 @@ body {
     margin-top: 5px;
 }
 
-/* Hero Section */
+
 .navbar {
     background: #ad184c;
     width: 100%;
@@ -34,7 +34,7 @@ body {
     font-size: x-large;
 }
 
-/* Change color of navbar links to red on hover */
+
 .navbar-nav .nav-link:hover {
     color: #ff4b2b !important;
     font-weight: bold;
@@ -46,7 +46,7 @@ body {
 }
 
 .background-container {
-    background-image: url('/static/css/vI.jpg'); /* Make sure the path is correct */
+    background-image: url('/static/css/vI.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -57,8 +57,8 @@ body {
 
 .hero {
     color: white;
-    position: relative; /* Ensure the hero section is positioned on top of the background */
-    z-index: 2; /* Keeps the hero section on top of the background */
+    position: relative; 
+    z-index: 2; 
     text-align: center;
     width: 60%;
     margin-top: 17%;
@@ -67,7 +67,7 @@ body {
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    background: rgba(0, 0, 0, 0.5); 
     border-radius: 10px;
     padding: 20px;
 }
@@ -91,7 +91,7 @@ body {
 }
 
 #nav {
-    position: fixed; /* Keeps the navbar at the top even when scrolling */
+    position: fixed; 
 }
 
 .btn-lg {
@@ -118,8 +118,8 @@ button {
 .view {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #ff4500; /* Button background */
-    color: #fff; /* Button text color */
+    background-color: #ff4500; 
+    color: #fff; 
     border-radius: 20px!important;
     text-transform: uppercase;
     font-weight: bold;
@@ -143,39 +143,39 @@ button {
     color: white;
 }
 
-/* Card Styling */
+
 .card {
     border: none;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .card:hover {
-    transform: translateY(-10px); /* Lift the card slightly on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
-/* Card Image */
+
 .card-img-top {
     height: 200px;
-    object-fit: cover; /* Keep image aspect ratio while filling the space */
+    object-fit: cover; 
 }
 
-/* Card Body */
+
 .card-body {
     text-align: center;
     padding: 20px;
-    background-color: #f9f9f9; /* Light background for contrast */
+    background-color: #f9f9f9; 
     transition: background-color 0.3s ease;
 }
 
 .card:hover .card-body {
-    background-color: #f0f0f0; /* Subtle change on hover */
+    background-color: #f0f0f0; 
 }
 
-/* Card Title */
+
 .card-title {
     font-size: 1.25rem;
     margin-bottom: 10px;
@@ -183,29 +183,29 @@ button {
     font-weight: bold;
 }
 
-/* View Details Link */
+
 .view {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
-    background-color: #ff6347; /* Button background */
-    color: #fff; /* Button text color */
+    background-color: #ff6347; 
+    color: #fff; 
     border-radius: 5px;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover */
+    transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
 }
 
 .view:hover {
-    background-color: #ff4500; /* Darker orange on hover */
-    color: #fff; /* Keep text white on hover */
+    background-color: #ff4500; 
+    color: #fff; 
 }
 
-/* Promo Email Section Styles */
+
 .promo-email-section {
-    background-color: #f4f4f4; /* Light background for the section */
+    background-color: #f4f4f4; 
     padding: 60px 0;
 }
 
@@ -215,13 +215,13 @@ button {
     text-align: center;
 }
 
-/* Email Box Styling Specific to Promo Section */
+
 .promo-email-section .email-box {
     background-color: #fff;
     border-radius: 10px;
     padding: 40px 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for the box */
-    border: 1px solid #e0e0e0; /* Subtle border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0; 
 }
 
 .promo-email-section p {
@@ -433,4 +433,52 @@ button {
 
 .btn-secondary:hover {
     background-color: #f1f1f1;
+}
+
+
+
+
+.modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    font-size: 1.5rem; 
+    font-weight: bold;
+   
+}
+
+.modal-body {
+    
+    font-size: 1.2rem; 
+}
+
+.modal-body img {
+    width: 650px;
+    height: 350px; 
+    border-radius: 4px;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+
+.modal-footer {
+    border-top: none;
+    text-align: center; 
+}
+
+.btn-secondary {
+    background-color: #e63946; 
+    border-color: #e63946;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #cf505b; 
+    border-color: #cf505b;
 }

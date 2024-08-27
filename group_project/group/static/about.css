@@ -1,0 +1,73 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensure the body takes up the full viewport height */
+}
+
+/* .about-header {
+    background-image: url('./images/SIP.jpg') no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    padding: 100px 0;
+} */
+
+.about-header img{
+    width: 100%;
+    height: 100%;
+}
+.team-member {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+}
+.team-member img {
+    width: 100%;
+    height: auto;
+}
+.history-item {
+    margin-bottom: 30px;
+}
+
+.navbar {
+    background: #ad184c;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    color:#ff4b2b  !important;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+/* Change color of navbar links to red on hover */
+.navbar-nav .nav-link:hover {
+    color: #ff4b2b !important;
+    font-weight: bold;
+}
+.navbar-nav .nav-link {
+    color: black !important;
+}
+
+
+
+#mission-heading {
+    color: #ff4b2b !important;
+    font-weight: bold;
+}
+
+
+
+

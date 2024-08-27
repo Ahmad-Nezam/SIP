@@ -66,6 +66,14 @@ class FollowUp(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+class Feedback(models.Model):
+    satisfaction = models.IntegerField()
+    recommendation = models.IntegerField()
+    ease_of_use = models.IntegerField()
+
+    def __str__(self):
+        return f"Feedback {self.id}"
 
 
 

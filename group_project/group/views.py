@@ -2,7 +2,8 @@ from django.shortcuts import render ,redirect
 from . import models
 from django.contrib import messages 
 from django.http import JsonResponse
-from .models import user , booking ,villas , FollowUp
+from .models import user , booking ,villas , FollowUp , Feedback
+from django.http import HttpResponse
 from django.http import Http404
 import json
 from django.http import JsonResponse
@@ -269,6 +270,23 @@ def follow_up(request):
         return JsonResponse({'message': 'Success'})
 
     return render(request, 'index.html')
+
+def submit_feedback(request):
+    if request.method == 'POST':
+        satisfaction = request.POST.get('satisfaction')
+        recommendation = request.POST.get('recommendation')
+        ease_of_use = request.POST.get('ease_of_use')
+        
+        # Save feedback to the database
+        Feedback.objects.create(
+            satisfaction=satisfaction,
+            recommendation=recommendation,
+            ease_of_use=ease_of_use
+        )
+        
+        return JsonResponse({'message': 'Feedback submitted successfully!'})
+    else:
+        return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
 
 def logout(request):

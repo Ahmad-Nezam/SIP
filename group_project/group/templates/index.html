@@ -453,7 +453,6 @@ document.getElementById('followUpForm').addEventListener('submit', function(even
 </script>
 
 
-
 <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -464,7 +463,7 @@ document.getElementById('followUpForm').addEventListener('submit', function(even
                 </button>
             </div>
             <div class="modal-body">
-                <form id="feedbackForm" method="POST">
+                <form id="feedbackForm" method="POST" action="{% url 'submit_feedback' %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="satisfaction">How satisfied are you with "StayInPalestine" in general?</label>
@@ -521,9 +520,57 @@ document.getElementById('followUpForm').addEventListener('submit', function(even
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+       document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    var form = event.target;
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return response.text().then(text => {
+                throw new Error(`HTTP error ${response.status}: ${text}`);
+            });
+        }
+    })
+    .then(data => {
+        Swal.fire({
+            title: 'Thank you for your feedback!',
+            text: 'We appreciate your input.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            $('#feedbackModal').modal('hide'); 
+            form.reset(); 
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Oops!',
+            text: error.message || 'Something went wrong. Please try again.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+});
+        </script>
+
     <footer class="bg-dark text-white text-center py-3" id="footer">
         <p>&copy; 2024 StayInPalestine. All rights reserved.</p>
     </footer>
+
     <script src="static/js.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

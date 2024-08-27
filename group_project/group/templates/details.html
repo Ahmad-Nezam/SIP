@@ -78,11 +78,11 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="slider">
-                <img src="{{ details.image.url }}" class="slider-image" alt="Slide 1">
-                <img src="{{ details.image.url }}" class="slider-image" alt="Slide 2">
-                <img src="{{ details.image.url }}" class="slider-image" alt="Slide 3">
-                <img src="{{ details.image.url }}" class="slider-image" alt="Slide 4">
-                <img src="{{ details.image.url }}" class="slider-image" alt="Slide 5">
+                <img src="{% static 'css/j.jpg' %}" class="slider-image" alt="Slide 1">
+                <img src="{% static 'css/j.jpg' %}" class="slider-image" alt="Slide 2">
+                <img src="{% static 'css/j.jpg' %}" class="slider-image" alt="Slide 3">
+                <img src="{% static 'css/j.jpg' %}" class="slider-image" alt="Slide 4">
+                <img src="{% static 'css/j.jpg' %}" class="slider-image" alt="Slide 5">
             </div>
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -130,6 +130,7 @@
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly" defer></script>
+
 
 
 

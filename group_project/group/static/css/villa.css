@@ -3,11 +3,11 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 50px;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 .card {
-    width: 350px; 
+    width: 350px;
     margin: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -22,20 +22,21 @@
 }
 
 .card-img-top {
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
-    display: block; 
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
 }
 
 .card h1 {
     font-size: 1.5rem;
     margin: 15px;
+    color: #333; /* Unified color for headings */
 }
 
 .card h2 {
     font-size: 1.2rem;
-    color: #555;
+    color: #666; /* Unified color for subheadings */
     margin: 15px;
 }
 
@@ -44,7 +45,7 @@
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #ff4b2b;
+    background-color: #ff4b2b !important; /* Consistent button color */
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
@@ -53,7 +54,7 @@
 }
 
 .card button:hover {
-    background-color: #ff4b2b;
+    background-color: #fa4f31; /* Darker shade for hover effect */
 }
 
 
@@ -110,16 +111,5 @@ body {
     margin-bottom: 10px; 
 }
 
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 50px;
-    margin-top: 20px; 
-}
 
-.favorite-icon {
-    z-index: 1000; /* Ensures the icon is on top of other elements */
-    position: relative; /* Make sure it remains in the flow of the document */
-}
 

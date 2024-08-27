@@ -67,7 +67,6 @@
             </form>
         </div>
 
-
         <div class="card-container">
             {% if villass %}
             {% for villa in villass %}
@@ -80,18 +79,43 @@
                     <h2>{{ villa.rooms }} Rooms</h2>
                     <button type="submit">More Details</button>
                 </form>
-               
             </div>
             {% endfor %}
             {% else %}
             <p>No villas available.</p>
             {% endif %}
         </div>
+        
 
 
 
     </div>
     <script src="static/villa.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const maxLength = 100; 
+        
+            document.querySelectorAll('.card').forEach(card => {
+                const description = card.querySelector('h2:nth-of-type(1)'); 
+                if (description.textContent.length > maxLength) {
+                    const text = description.textContent;
+                    description.textContent = text.slice(0, maxLength) + '... ';
+                    const readMore = document.createElement('a');
+                    readMore.href = '#';
+                    readMore.textContent = 'Read more';
+                    readMore.style.color = '#007bff'; 
+                    readMore.style.textDecoration = 'none';
+                    readMore.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        description.textContent = text;
+                        readMore.remove();
+                    });
+                    description.appendChild(readMore);
+                }
+            });
+        });
+        </script>
+        
 </body>
 
 </html>

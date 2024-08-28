@@ -220,26 +220,21 @@ def delete_booking(request, id):
 
 
 
-def send_comment_email(request):
+def subscribe(request):
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            email = data.get('email')
-            comment = data.get('comment')
-
-         
+        email = request.POST.get('email')
+        if email:
+            
             send_mail(
-                'New Comment from ' + email,
-                comment,
-                'ahmad628go@gmail.com', 
-                ['ahmad628og@gmail.com'],  
+                subject='New Subscription',
+                message=f'Someone has subscribed with the email: {email}',
+                from_email='your-email@example.com',  
+                recipient_list=['ahmd628go@gmail.com'],
                 fail_silently=False,
             )
-
-            return JsonResponse({'success': True})
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON'})
-    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+            messages.success(request, 'Thank you for subscribing!')
+            return redirect('/')
+    return render(request, 'index.html')
 
 def villas_by_location(request, location):
     First_name = request.session.get('First_name')
@@ -277,7 +272,7 @@ def submit_feedback(request):
         recommendation = request.POST.get('recommendation')
         ease_of_use = request.POST.get('ease_of_use')
         
-        # Save feedback to the database
+       
         Feedback.objects.create(
             satisfaction=satisfaction,
             recommendation=recommendation,

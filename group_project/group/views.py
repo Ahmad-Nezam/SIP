@@ -224,16 +224,16 @@ def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         if email:
-            
+        
             send_mail(
                 subject='New Subscription',
                 message=f'Someone has subscribed with the email: {email}',
                 from_email='your-email@example.com',  
-                recipient_list=['ahmd628go@gmail.com'],
+                recipient_list=['ahmad628go@gmail.com'],
                 fail_silently=False,
             )
-            messages.success(request, 'Thank you for subscribing!')
-            return redirect('/')
+          
+            return render(request, 'index.html', {'subscribed': True})
     return render(request, 'index.html')
 
 def villas_by_location(request, location):

@@ -270,7 +270,7 @@
         </div>
     </section>
 
-  <section class="promo-email-section">
+    <section class="promo-email-section">
         <div class="container">
             <div class="email-box">
                 <p class="text-center">Get the latest updates and promotions directly to your inbox!</p>
@@ -282,16 +282,20 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Subscribe</button>
                 </form>
-                {% if messages %}
-                    <div class="alert alert-success mt-3">
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
             </div>
         </div>
     </section>
+
+    {% if subscribed %}
+    <script>
+        Swal.fire({
+            title: 'Thank you!',
+            text: 'Thank you for subscribing!',
+            icon: 'success',
+            confirmButtonText: 'Close'
+        });
+    </script>
+    {% endif %}
     
 
   

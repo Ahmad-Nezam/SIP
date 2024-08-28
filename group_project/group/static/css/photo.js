@@ -43,17 +43,18 @@ document.querySelector('.prev').addEventListener('click', function() {
 document.querySelector('.next').addEventListener('click', function() {
     plusSlides(1);
 });
+
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: { lat: -33, lng: 151 },
-      mapTypeControl: true,
-      mapTypeControlOptions: {
-        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-        mapTypeIds: ["roadmap", "terrain"],
-      },
+        zoom: 10,
+        center: { lat: -33.8688, lng: 151.2093 },
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            mapTypeIds: ["roadmap", "terrain"],
+        },
     });
-  }
+}
 
-  
-  window.initMap = initMap;
+window.initMap = initMap;
+

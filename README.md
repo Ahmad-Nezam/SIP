@@ -16,18 +16,12 @@ StayInPalestine is a web application built with Django, designed to streamline t
 - **Villa Detail Page**: View all necessary details about the villa, including:
   - Images
   - Map Location
-  - Availability Calendar
   - Owner Contact Information
 
 ### Booking System
 - **Date Selection**: Choose your preferred dates for a stay.
 - **Cost Breakdown**: Transparent pricing information.
 - **Booking Confirmation**: Complete the booking process with instant confirmation.
-- **Automated Notifications**: Receive email notifications for booking confirmations and updates.
-
-### Dashboards
-- **Renters Dashboard**: Manage your bookings, view past stays, and track upcoming reservations.
-- **Owners Dashboard**: Manage property listings, monitor bookings, and interact with renters.
 
 ### Reviews
 - **Renters**: Leave reviews and feedback on villas after their stay, helping future renters make informed decisions.
@@ -51,10 +45,5 @@ StayInPalestine is a web application built with Django, designed to streamline t
   - **Version Control**: Managed with Git for efficient collaboration and version tracking.
 
 
-### Prerequisites
-
-- Python 3.x
-- Django 3.x
-- Bootstrap 5 (for frontend styling)
 
 

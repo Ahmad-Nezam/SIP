@@ -9,6 +9,7 @@ import json
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.urls import reverse
+from datetime import datetime
 import bcrypt
 
 def index(request):
@@ -146,8 +147,6 @@ def details(request, villa_id):
 
 
 
-from datetime import datetime
-
 def booking_view(request, villa_id):
     First_name = request.session.get('First_name')
     Last_name = request.session.get('Last_name')
@@ -173,14 +172,14 @@ def booking_view(request, villa_id):
                 villas_id=villa
             )
             Booking.save()
-            villa.status = 'Booked'  # Set status to 'Booked' when a booking is made
+            villa.status = 'Booked'  
             villa.save()
             return JsonResponse({'success': True, 'redirect_url': reverse('booking', args=[villa_id])})
         except Exception as e:
             print(f"Booking creation failed: {e}")
             return JsonResponse({'success': False, 'error': f'An error occurred: {e}'})
     
-    current_datetime = datetime.now().strftime("%Y-%m-%dT%H:%M")  # Format for datetime-local input
+    current_datetime = datetime.now().strftime("%Y-%m-%dT%H:%M")  
 
     return render(request, 'booking.html', {
         'villa': villa,
@@ -295,6 +294,8 @@ def submit_feedback(request):
         return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
 
+
+
 def logout(request):
     request.session.flush()
-    return redirect('/login')
+    return JsonResponse({'success': True})

@@ -146,6 +146,8 @@ def details(request, villa_id):
 
 
 
+from datetime import datetime
+
 def booking_view(request, villa_id):
     First_name = request.session.get('First_name')
     Last_name = request.session.get('Last_name')
@@ -154,6 +156,7 @@ def booking_view(request, villa_id):
         user_name = f"{First_name} {Last_name}"
     else:
         user_name = None
+    
     try:
         villa = villas.objects.get(id=villa_id)
     except villas.DoesNotExist:
@@ -170,12 +173,21 @@ def booking_view(request, villa_id):
                 villas_id=villa
             )
             Booking.save()
+            villa.status = 'Booked'  # Set status to 'Booked' when a booking is made
+            villa.save()
             return JsonResponse({'success': True, 'redirect_url': reverse('booking', args=[villa_id])})
         except Exception as e:
             print(f"Booking creation failed: {e}")
             return JsonResponse({'success': False, 'error': f'An error occurred: {e}'})
     
-    return render(request, 'booking.html', {'villa': villa ,'user_name': user_name})
+    current_datetime = datetime.now().strftime("%Y-%m-%dT%H:%M")  # Format for datetime-local input
+
+    return render(request, 'booking.html', {
+        'villa': villa,
+        'user_name': user_name,
+        'current_datetime': current_datetime
+    })
+
 
 def booked(request):
     First_name = request.session.get('First_name')

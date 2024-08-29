@@ -113,3 +113,13 @@ body {
 
 
 
+.booked-label {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+}

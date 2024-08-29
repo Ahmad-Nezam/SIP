@@ -113,10 +113,8 @@ def villa_list(request):
     selected_rooms = request.GET.get('rooms', '')  
 
     if selected_rooms:
-       
         villass = villas.objects.filter(rooms=selected_rooms)
     else:
-       
         villass = villas.objects.all()
 
     context = {
@@ -127,6 +125,7 @@ def villa_list(request):
     }
     
     return render(request, 'villas.html', context)
+
 
 
 def details(request, villa_id):

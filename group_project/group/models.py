@@ -1,5 +1,7 @@
 from django.db import models
 import re	
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 import bcrypt
 
 class UserManager(models.Manager):
@@ -58,6 +60,18 @@ class booking(models.Model):
     date_end = models.DateTimeField()
     villas_id = models.ForeignKey(villas, on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        
+        self.villas_id.status = 'Booked'
+        self.villas_id.save()
+        super().save(*args, **kwargs)
+
+@receiver(post_delete, sender=booking)
+def update_villa_status_on_delete(sender, instance, **kwargs):
+ 
+    instance.villas_id.status = 'Available'
+    instance.villas_id.save()
+
 class FollowUp(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -74,6 +88,7 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"Feedback {self.id}"
+    
 
 
 

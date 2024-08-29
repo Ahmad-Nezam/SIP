@@ -77,7 +77,11 @@
                     <h1>{{ villa.name }}</h1>
                     <h2>{{ villa.desc }}</h2>
                     <h2>{{ villa.rooms }} Rooms</h2>
-                    <button type="submit">More Details</button>
+                    {% if villa.status == 'Booked' %}
+                        <span class="booked-label">Booked</span>
+                    {% else %}
+                        <button type="submit">More Details</button>
+                    {% endif %}
                 </form>
             </div>
             {% endfor %}
@@ -85,6 +89,9 @@
             <p>No villas available.</p>
             {% endif %}
         </div>
+        
+        
+        
         
 
 
